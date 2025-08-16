@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-public class Boostable : MonoBehaviour, IMovementAffector
+public class Boostable : MonoBehaviour, IMovementDecorator
 {
     public float boostMultiplier = 1.5f;
     public float boostDuration = 0.8f;

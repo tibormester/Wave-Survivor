@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Knockbackable : MonoBehaviour, IDamageListener, IMovementAffector {
+public class Knockbackable : MonoBehaviour, IDamageListener, IMovementDecorator {
 
 
     public float knockbackDamageMultiplier = 1f;
