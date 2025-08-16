@@ -12,7 +12,7 @@ public class MovementController : MonoBehaviour
     public void Update()
     {
         float finalSpeed = moveSpeed;
-        var affectors = GetComponents<IMovementAffector>();
+        var affectors = GetComponents<IMovementDecorator>();
         //Can i use a collections function like map with an accumulator?
         foreach (var affector in affectors)
         {
