@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 480108973}
   m_Layer: 0
   m_Name: Player Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 697152007}
   m_Layer: 0
   m_Name: Game Manager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -907,7 +907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c34a33d999d1743a4708a101e6fbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 971794889}
+  enemyPrefab: {fileID: 7342849384872623845, guid: 274e4b4e218e7134685e1d26b8810ef9, type: 3}
+  player: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,11 +958,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 382735129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &971794889 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7342849384872623845, guid: 274e4b4e218e7134685e1d26b8810ef9, type: 3}
-  m_PrefabInstance: {fileID: 6981932714376171077}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6981932714376171077
 PrefabInstance:
   m_ObjectHideFlags: 0
