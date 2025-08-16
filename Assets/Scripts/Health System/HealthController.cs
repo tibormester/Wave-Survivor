@@ -14,25 +14,25 @@ public class HealthController : MonoBehaviour
 
     public void SetHealth(int value){
         var delta = value - _health;
-        AdjustHealth(delta);
+        AdjustHealth(delta, null);
     }
 
-    public void AdjustHealth(int delta){
+    public void AdjustHealth(int delta, GameObject source){
         if (delta > 0 && _health < maxHealth){
             if (_health + delta > maxHealth){
-                Heal(maxHealth - _health);
+                Heal(maxHealth - _health, source);
             } else {
-                Heal(delta);
+                Heal(delta, source);
             }
         } else if (delta < 0 && _health > 0) {
             if (_health + delta < 0){
                 if (_health < 0){
-                    TakeDamage(-_health);
+                    TakeDamage(-_health, source);
                 } else {
-                    TakeDamage(-delta);
+                    TakeDamage(-delta, source);
                 }
             } else {
-                TakeDamage(-delta);
+                TakeDamage(-delta, source);
             }
         } else{
             Debug.LogWarning("HealthController: AdjustHealth called with invalid delta");
@@ -41,21 +41,21 @@ public class HealthController : MonoBehaviour
     }
 
     
-    private void TakeDamage(int damageAmount)
+    private void TakeDamage(int damageAmount, GameObject source)
     {
         _health -= damageAmount;
         foreach (var listener in GetComponents<IDamageListener>())
         {
-            listener.OnDamage(damageAmount, _health, maxHealth);
+            listener.OnDamage(damageAmount, _health, maxHealth, source);
         }
     }
 
-    private void Heal(int healAmount)
+    private void Heal(int healAmount, GameObject source)
     {
         _health += healAmount;
         foreach (var listener in GetComponents<IHealListener>())
         {
-            listener.OnHeal(healAmount, _health, maxHealth);
+            listener.OnHeal(healAmount, _health, maxHealth, source);
         }
     }
 
