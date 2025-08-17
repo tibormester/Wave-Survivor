@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 4840851611779058432}
   - component: {fileID: 4416817906760098585}
   - component: {fileID: 2564522989771768739}
+  - component: {fileID: 4704599186219229144}
   m_Layer: 0
   m_Name: Test Character
   m_TagString: Untagged
@@ -73,7 +74,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed4e367accca7824b812042273f1a134, type: 2}
+  - {fileID: 2100000, guid: 59abffa2f4fbbc445888c845358b0629, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba309194db3ad334bbb24211f8d8a990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 4.5
   movementInput: {x: 0, y: 0, z: 0}
 --- !u!114 &1738629562834376
 MonoBehaviour:
@@ -121,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4febf1ffc1a906d4bab29ecc943a3387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 6
 --- !u!114 &3001091054544913039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556780a96a3e5254ab6bd687fe7cd706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackDamageMultiplier: 1
+  knockbackDamageMultiplier: 1.5
   knockbackSpeed: 5
 --- !u!114 &2333519753752176703
 MonoBehaviour:
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1abb44ad6bfc75c42bef7a8612cabdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyDelay: 0.15
+  destroyDelay: 0.25
 --- !u!61 &1857719815950815001
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -258,3 +259,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8497f097ba93f44b786eb07f784ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4704599186219229144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342849384872623845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4186cb31950a44080597730c0451ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suicideBomberTime: 0.45
+  suicideDistance: 3
+  explosionPrefab: {fileID: 6958763139457071017, guid: 5020123e551f07447a668393a3fa0ef8, type: 3}
