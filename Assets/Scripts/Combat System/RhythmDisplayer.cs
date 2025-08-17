@@ -8,22 +8,41 @@ using System;
 
 public class RhythmDisplayer : MonoBehaviour{
 
-    public float maxRadius = 1.5f;
-    public float beatsPerMinute = 60f;
-    public float[] rhythmBeatPatternCounts = {1f, 2f, 3f, 4f};
-    public float beatsLengthCount = 4f;
-    public float ringPreviewTimeSeconds = 0.5f;
+    //the audio and rhythm manager class - should only manage the audio playback and holding the rhythm pattern data
+    // could separate the audio syncing from the rhythm pattern management - but might overcomplicate things - for now chunk it, separate later
+    public float maxRadius = 1.5f; // the player's radius - belongs in the ring previewer class - one that displays the rings as they are about to arrive
+        // the beat manager class - this should manage spawning new beats and configuring them, the beats should then be self sufficient for updating and deleting themselves
+        // the beat manager class should expose an API for attempting the next beat and getting the result - accuracy as a percentage.
 
-    private const int ringSegments = 100;
+        // the rhythm manager class - has a music sync component - it also has a rhythm sync api exposing when each beat should happen
+        
+        // the beat class - this stores beat data - like its start and expire time, as well as if and when it was attempted. 
+
+        //As a result of the beat - we want to trigger attacks that scale with the beat accuracy - lore wise- these are continuations, but logically it makes sesne for them to be distinct
+        //So the attack class needs an initialization method that accepts the beat accuracy
+        // The beat class needs an on expiry method or event that triggers the attack class to get spawned with the right initializations
+
+        // the player attack manager class - handles recieving player input - querrying the rhythm manager for the next beat, and then triggering the appropriate attack based on the game state and the beat accruacy
+        // - scope is taking user input and turning it into the appropriate attack - using the rhythm manager's api to get the appropriate beat, and using the beat's api to get the accuracy and timing.
 
 
-    private LineRenderer _lineRenderer;
+    
+    public float beatsPerMinute = 60f;  // part of the audio / rhythm manager  - sync the audio with the rhythm pattern
+    public float[] rhythmBeatPatternCounts = {1f, 1.5f, 3.5f, 4f}; // ditto
+    public float beatsLengthCount = 4f; // ditto
+    public float ringPreviewTimeSeconds = 0.5f; // This goes into the previewer class
 
-    private float _secondsPerBeat;
-    private float _measureDurationSeconds;
-    private float _measureZeroStartTime;
+    private const int ringSegments = 100; // this also into the previewer class
 
-    public class RingInstance{
+
+    private LineRenderer _lineRenderer; // this is the ring previewer class
+
+    private float _secondsPerBeat; // this is the audio / rhythm manager class
+    private float _measureDurationSeconds; // this is the audio / rhythm manager class
+    private float _measureZeroStartTime; // this is the audio / rhythm manager class
+
+    public class RingInstance{ // this can be converted to a full time gamobject with it's own monobehaviours - it'll need a line renderer and a ring controller to handle the logic of shrinking/ growing on time and stuff...
+        //ideally i would want a pool pattern or like an ECS pattern to handle all the rings - 
         public LineRenderer renderer;
         public float spawnTime;
         public float hitTime;
@@ -85,6 +104,7 @@ public class RhythmDisplayer : MonoBehaviour{
         }
     }
 
+    //The beat manager - needs to know that if you miss a beat, give a brief window to ignore the next beat, so that you don't too harshly penalized...? or maybe thats feature creep?
     public RingInstance GetBestRing(){
         float bestPercentage = 0f;
         RingInstance bestRing = null;
@@ -135,6 +155,7 @@ public class RhythmDisplayer : MonoBehaviour{
         return measureStart + (offsetBeats * _secondsPerBeat);
     }
 
+
     private void AdvanceSchedulePointer(){
         _nextPatternIndexToSchedule++;
         if (_nextPatternIndexToSchedule >= _sortedPattern.Length){
@@ -143,6 +164,7 @@ public class RhythmDisplayer : MonoBehaviour{
         }
     }
 
+//this will be replaced by the beat manager class
     private void SpawnRing(float spawnTime, float hitTime){
         var lr = CreateRingRenderer();
         // Initialize at radius 0 on spawn; if we're late, we still compute based on time in Update
@@ -154,6 +176,7 @@ public class RhythmDisplayer : MonoBehaviour{
         });
     }
 
+//  This won't be needed once the beat 'ring' is a full gameobject with it's own monobehaviour's 
     private LineRenderer CreateRingRenderer(){
         // Clone a lightweight LineRenderer using the attached one as a template
         var go = new GameObject("RhythmRing");

@@ -38,6 +38,12 @@ public class PlayerAttackController : MonoBehaviour
             wave.waveMaxSize *= Mathf.Pow(ring.hitPercentage, 2f);
             wave.currentRadius = 1.5f;
         }
-        
+        /**
+        var arc = attack as ArcWaveAttack;
+        if (arc != null){
+            arc.waveMaxSize *= Mathf.Pow(ring.hitPercentage, 2f);
+            arc.currentRadius = 1.5f;
+        }
+        */
     }
 }

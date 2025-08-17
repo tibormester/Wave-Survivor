@@ -66,5 +66,7 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
     },
-    "dotnet.defaultSolution": "Chili Code Jam.sln"
+    "dotnet.defaultSolution": "Chili Code Jam.sln",
+    "unity-tools.localDocumentationPath": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.1.14f1\\Editor\\Data\\Documentation\\en\\ScriptReference",
+    "unity-tools.localDocumentationViewer": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
 }

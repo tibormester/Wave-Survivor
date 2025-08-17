@@ -5,7 +5,6 @@ public class MovementController : MonoBehaviour
 
     public float moveSpeed = 5f;
 
-
     public Vector3 movementInput = new Vector3(0, 0, 0);
   
     // Update is called once per frame
@@ -25,5 +24,6 @@ public class MovementController : MonoBehaviour
         }
         transform.position += finalMovement;
     }
+
 
 }
