@@ -16,7 +16,7 @@ public class HealthController : MonoBehaviour
 
     public void SetHealth(int value){
         var delta = value - _health;
-        AdjustHealth(delta, null);
+        AdjustHealth(delta, gameObject);
     }
 
     public void AdjustHealth(int delta, GameObject source){
@@ -27,15 +27,7 @@ public class HealthController : MonoBehaviour
                 Heal(delta, source);
             }
         } else if (delta < 0 && _health > 0) {
-            if (_health + delta < 0){
-                if (_health < 0){
-                    TakeDamage(-_health, source);
-                } else {
-                    TakeDamage(-delta, source);
-                }
-            } else {
-                TakeDamage(-delta, source);
-            }
+            TakeDamage(-delta, source);
         } else{
             Debug.LogWarning("HealthController: AdjustHealth called with invalid delta");
             return;

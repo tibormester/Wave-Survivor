@@ -4,19 +4,43 @@ public class GameManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
     
+    const float SPAWN_RADIUS = 25f;
     private int _waveNumber = 0;
+    private int _enemyCount = 0;
 
     void Start(){
-        SpawnEnemy();
+        NextWave();
     }
 
-    private void SpawnEnemy(){
-        var enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+    private void SpawnEnemy(Vector3 spawnPoint){
+        var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         enemy.GetComponent<HealthController>().healthZeroed += OnEnemyDeath;
+        _enemyCount++;
     }
 
     private void OnEnemyDeath(){
+        _enemyCount--;
+        if (_enemyCount == 0){
+            NextWave();
+        }
+    }
+
+    private void NextWave(){
         _waveNumber++;
-        SpawnEnemy();
+        var spawnPoints = GetSpawnPoints(_waveNumber);
+        foreach (var spawnPoint in spawnPoints){
+            SpawnEnemy(spawnPoint);
+        }
+    }
+
+    private Vector3[] GetSpawnPoints(int count = 1){
+        var spawnPoints = new Vector3[count];
+        var center = transform.position;
+        var radius = SPAWN_RADIUS;
+        for (int i = 0; i < count; i++){
+            var angle = i * 2 * Mathf.PI / count;
+            spawnPoints[i] = center + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
+        }
+        return spawnPoints;
     }
 }

@@ -5,9 +5,12 @@ public class EnemyChaseState : MonoBehaviour, IEnemyState{
     private GameObject _player;
     private MovementController _movementController;
 
-    public void Enter(){
+    void Start(){
         _player = GameObject.FindGameObjectWithTag("Player");
         _movementController = GetComponent<MovementController>();
+    }
+    public void Enter(){
+        
     }
 
     public void Tick(){

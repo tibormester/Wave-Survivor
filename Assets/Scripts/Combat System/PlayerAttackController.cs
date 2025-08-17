@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackController : MonoBehaviour
+public class PlayerAttackController : MonoBehaviour
 {
     public Attack attackPrefab;
 
