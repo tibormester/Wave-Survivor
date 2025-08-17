@@ -19,7 +19,7 @@ public class LineRendererUtility
 			float x = Mathf.Cos( angle) * radius;
 			float y = Mathf.Sin( angle) * radius;
 
-			points[i] = new Vector3( x, y, 0);
+			points[i] = new Vector3( x, y, -2);
 		}
 
 		lineRenderer.positionCount = segments;

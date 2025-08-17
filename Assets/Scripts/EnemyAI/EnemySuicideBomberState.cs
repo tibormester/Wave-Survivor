@@ -31,6 +31,7 @@ public class EnemySuicideBomberState : MonoBehaviour, IEnemyState{
         if (_timer >= suicideBomberTime){
             var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             _healthController.SetHealth(0);
+            _timer = 0f;
 
         }
     }
