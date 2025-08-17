@@ -2,12 +2,11 @@
 //Additional purpose is to expose an API for accessing these spawned beats - specifically need to find the next beat that is due to hit
 
 using UnityEngine;
-using System.Collections.Generic;
 
 public class BeatManager : MonoBehaviour{
 
 
-    public float maxRadius = 1.5f; // the player's radius - belongs in the ring previewer class - one that displays the rings as they are about to arrive
+    public float maxRadius = 1f; // the player's radius - belongs in the ring previewer class - one that displays the rings as they are about to arrive
 
     public float previewTimeSeconds = 0.5f; // This goes into the previewer class
 
@@ -15,8 +14,6 @@ public class BeatManager : MonoBehaviour{
     [SerializeField] private Beat _beatPrefab;
 
     private RhythmManager _rhythmManager;
-
-    private Dictionary<int, Beat> _beats = new Dictionary<int, Beat>();
     void Start(){
         _rhythmManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<RhythmManager>();
     }
@@ -26,7 +23,7 @@ public class BeatManager : MonoBehaviour{
         double startTime, hitTime;
         while (CanNextBeatBeSpawned(out startTime, out hitTime)){
             _lastSpawnedIndex++;
-            SpawnBeat((float)startTime, (float)hitTime, _lastSpawnedIndex);
+            SpawnBeat((float)startTime, (float)hitTime);
         }
 
     }
@@ -41,14 +38,9 @@ public class BeatManager : MonoBehaviour{
         return false; 
     }
      //Spawns the beat and configure it with the correct initial and final radius
-    private Beat SpawnBeat(float spawnTime, float hitTime, int index){
+    private Beat SpawnBeat(float spawnTime, float hitTime){
         var beat = Instantiate(_beatPrefab, transform);
         beat.Initialize(spawnTime, hitTime, maxRadius, 0f);
-        
-        _beats[index] = beat;
-        beat.OnExpire += () => {
-            _beats.Remove(index);
-        };
 
         return beat;
     }

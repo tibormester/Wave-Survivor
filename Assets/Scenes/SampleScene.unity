@@ -738,11 +738,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beatPattern:
   - 1
-  - 1.5
-  - 3.5
+  - 2
+  - 3
   - 4
-  patternLength: 4
-  beatsPerMinute: 60
+  - 6
+  patternLength: 8
+  beatsPerMinute: 120
   START_TIME_OFFSET_SECONDS: 0
 --- !u!1 &832575517
 GameObject:
@@ -870,8 +871,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f534580ab2f71d48a2307ef989ae49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRadius: 1.5
-  ringPreviewTimeSeconds: 0.5
+  maxRadius: 0.5
+  previewTimeSeconds: 2
   _beatPrefab: {fileID: 5558764493000032058, guid: 2562493ee13d5ea4294e8ebd3b22daee, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSpeed: 5
-  waveMaxSize: 10
+  waveMaxSize: 15
   waveDamage: 2
   currentRadius: 0
 --- !u!58 &754488148684356989

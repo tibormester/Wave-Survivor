@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class Beat : MonoBehaviour
 {
-    //This is set by the player attack manager and read by others
-    public bool playerHit = false;
-
     
     //These are set in the initialization method by the beat manager
     public double hitTime {get; private set;}
@@ -38,7 +35,8 @@ public class Beat : MonoBehaviour
         if (progressPercentage >= 1f){
             Expire();
         } else {
-            LineRendererUtility.MakeRing(_lineRenderer, progressPercentage, 100);
+            float radius = Mathf.Lerp((float)initialRadius, (float)finalRadius, progressPercentage);
+            LineRendererUtility.MakeRing(_lineRenderer, radius, 50);
         }
     }
 

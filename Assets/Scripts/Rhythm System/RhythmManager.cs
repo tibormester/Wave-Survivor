@@ -4,16 +4,11 @@ using System;
 public class RhythmManager : MonoBehaviour{
     
     //Must be sorted in chronological order - the beats are values indicate what count they appear on
-    [SerializeField] private float[] beatPattern = {1f, 1.5f, 3.5f, 4f};
+    [SerializeField] private float[] beatPattern = {1f, 1.5f,  1f, 2f, 3f, 3.75f, 4f};
     [SerializeField] private float patternLength = 4f; 
-    [SerializeField] private float beatsPerMinute = 60f;  
+    [SerializeField] private float beatsPerMinute = 120f;  
 
     [SerializeField] private double START_TIME_OFFSET_SECONDS = 0f;
-
-    //int beatIndexInPattern, float hitTime
-    public event Action<int, double> onBeat;
-    //int count, float hitTime
-    public event Action<int, double> onCount;
 
     private AudioSource _audioSource;
     private double _startTime;
@@ -23,16 +18,6 @@ public class RhythmManager : MonoBehaviour{
         _audioSource = GetComponent<AudioSource>();
         _audioSource.Play();
         _startTime = AudioSettings.dspTime;
-    }
-
-    private int _currentBeatIndex = 0;
-    private int _currentCount = 0;
-    void Update(){
-        double songCount = GetSongCount();
-        if (songCount > (double)_currentCount){
-            _currentCount = (int)songCount;
-            onCount?.Invoke(_currentCount, songCount);
-        }
     }
 
     //returns which beat we are on since the song started
@@ -58,10 +43,14 @@ public class RhythmManager : MonoBehaviour{
         return beatHitTime;
     }
 
-    public double GetPatternBeatHitTime(int beatIndexInPattern){
+    public double GetPatternBeatHitTime(int beatIndexInPattern, bool localToPattern = false){
         int index = beatIndexInPattern % beatPattern.Length;
-        float beat = beatPattern[index];
-        return GetBeatTime((double)beat);
+        double beat = (double)beatPattern[index];
+        if (!localToPattern){ 
+            int numberOfLoops = (int)(beatIndexInPattern / beatPattern.Length);
+            beat = beat + (numberOfLoops * patternLength);
+        }
+        return GetBeatTime(beat);
     }
 
 

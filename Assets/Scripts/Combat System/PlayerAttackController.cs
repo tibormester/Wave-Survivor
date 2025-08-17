@@ -3,39 +3,40 @@ using UnityEngine;
 public class PlayerAttackController : MonoBehaviour
 {
     public Attack attackPrefab;
-    private RhythmDisplayer _rhythmDisplayer;
+    private BeatManager _beatManager;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _rhythmDisplayer = GetComponent<RhythmDisplayer>();
+        _beatManager = GetComponent<BeatManager>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)){
-            var ring = _rhythmDisplayer.GetBestRing();
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1")){
+            Beat beat = _beatManager.GetNextBeat();
 
-            if (ring == null){
+            if (beat == null){
                 return;
             }
-            Debug.Log("Ring: " + ring.hitPercentage);
-            if (ring.hitPercentage > 0.5f){
-                ring.OnHit += onRingExpire;
+            Debug.Log("Beat: " + beat.hitTime);
+            if (beat.hitTime > (double)AudioSettings.dspTime){
+                HitBeat(beat);
             }
         }
     }
 
-    void onRingExpire(RhythmDisplayer.RingInstance ring){
+    void HitBeat(Beat beat){
+        beat.Expire();
         var attack = Instantiate(attackPrefab, transform.position, Quaternion.identity);
         attack.Initialize(gameObject);
 
         var wave = attack as WaveAttack;
         if (wave != null){
-            wave.waveMaxSize *= Mathf.Pow(ring.hitPercentage, 2f);
+            wave.waveMaxSize *= Mathf.Pow(beat.GetPercentageToHitTime(), 2f);
             wave.currentRadius = 1.5f;
         }
         /**
