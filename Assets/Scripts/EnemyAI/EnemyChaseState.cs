@@ -10,7 +10,7 @@ public class EnemyChaseState : MonoBehaviour, IEnemyState{
         _movementController = GetComponent<MovementController>();
     }
 
-    public void Update(){
+    public void Tick(){
         if (_player == null || _movementController == null){
             return;
         }

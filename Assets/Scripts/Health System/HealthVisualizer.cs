@@ -24,6 +24,7 @@ public class HealthVisualizer : MonoBehaviour, IDamageListener, IHealListener{
                 _emissionColor = mat.HasProperty("_EmissionColor") ? mat.GetColor("_EmissionColor") : Color.black;
             }
         }
+        updateVisuals(1, 1);
     }
 
     public void OnDamage(int damageAmount, int newHealth, int maxHealth, GameObject source){

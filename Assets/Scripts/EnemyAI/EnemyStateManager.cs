@@ -9,7 +9,7 @@ public class EnemyStateManager : MonoBehaviour{
 
     void Update(){
         if (currentState != null && currentState.IsValid()){
-            currentState.Update();
+            currentState.Tick();
         } else{
             int highestPriority = -999999999;
             IEnemyState nextState = null;
