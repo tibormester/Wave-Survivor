@@ -4,21 +4,31 @@ using System.Collections.Generic;
 public class WaveAttack : Attack
 {
     public float waveSpeed = 1f;
-    public float waveMaxSize = 10f;
+    public float waveMaxSize = 5f;
     public float waveDamage = 1f;
 
     private HashSet<HealthController> _alreadyHit = new HashSet<HealthController>();
+    private LineRenderer _lineRenderer;
+    private CircleCollider2D _circleCollider;
+    public float currentRadius = 0f;
+
+    const int RING_SEGMENTS = 100;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    void Start(){
+        _lineRenderer = GetComponent<LineRenderer>();
+        _circleCollider = GetComponent<CircleCollider2D>();
+        LineRendererUtility.MakeRing(_lineRenderer, currentRadius, RING_SEGMENTS);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.localScale += new Vector3(1f, 1f, 0f) * waveSpeed * Time.deltaTime;
-        if (transform.localScale.x > waveMaxSize){
+        currentRadius += waveSpeed * Time.deltaTime;
+        LineRendererUtility.MakeRing(_lineRenderer, currentRadius, RING_SEGMENTS);
+        _circleCollider.radius = currentRadius;
+
+        if (currentRadius > waveMaxSize){
             Destroy(gameObject);
         }
     }
