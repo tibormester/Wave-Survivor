@@ -5,10 +5,12 @@ public class PlayerAttackController : MonoBehaviour
     public Attack attackPrefab;
     private RhythmDisplayer _rhythmDisplayer;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _rhythmDisplayer = GetComponent<RhythmDisplayer>();
+
     }
 
     // Update is called once per frame

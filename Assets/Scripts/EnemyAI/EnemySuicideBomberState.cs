@@ -33,6 +33,7 @@ public class EnemySuicideBomberState : MonoBehaviour, IEnemyState{
             _healthController.SetHealth(0);
             _timer = 0f;
 
+
         }
     }
 
