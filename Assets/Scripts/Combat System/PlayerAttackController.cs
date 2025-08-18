@@ -46,4 +46,16 @@ public class PlayerAttackController : MonoBehaviour
         }
         */
     }
+
+    void onRingExpire(RhythmDisplayer.RingInstance ring){
+        var attack = Instantiate(attackPrefab, transform.position, Quaternion.identity);
+        attack.Initialize(gameObject);
+
+        var wave = attack as WaveAttack;
+        if (wave != null){
+            wave.waveMaxSize *= Mathf.Pow(ring.hitPercentage, 2f);
+            wave.currentRadius = 1.5f;
+        }
+        
+    }
 }
