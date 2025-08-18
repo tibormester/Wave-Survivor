@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4416817906760098585}
   - component: {fileID: 2564522989771768739}
   - component: {fileID: 4704599186219229144}
+  - component: {fileID: 7843668394323664373}
   m_Layer: 0
   m_Name: Test Character
   m_TagString: Untagged
@@ -50,7 +51,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7342849384872623845}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &3603733408535389800
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackDamageMultiplier: 1.5
   knockbackSpeed: 5
+  maxKnobackTime: 1.5
 --- !u!114 &2333519753752176703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,3 +276,24 @@ MonoBehaviour:
   suicideBomberTime: 0.45
   suicideDistance: 3
   explosionPrefab: {fileID: 6958763139457071017, guid: 5020123e551f07447a668393a3fa0ef8, type: 3}
+--- !u!114 &7843668394323664373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342849384872623845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ae7ca1a9a38324e9f8493c7e7cd191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRadius: 0.5
+  previewTimeSeconds: 2
+  notePattern:
+  - 1
+  - 2
+  - 3
+  - 4
+  patternLength: 4
+  _notePrefab: {fileID: 9191383388718416156, guid: 2562493ee13d5ea4294e8ebd3b22daee, type: 3}
