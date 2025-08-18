@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Beat : MonoBehaviour
+public class Note : MonoBehaviour
 {
     
     //These are set in the initialization method by the beat manager
@@ -43,5 +43,5 @@ public class Beat : MonoBehaviour
     public void Expire(){
         OnExpire?.Invoke();
         Destroy(gameObject);
-    }
+    }   
 }

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4777401376429653176}
   - component: {fileID: 5049794204342312934}
-  - component: {fileID: 5558764493000032058}
+  - component: {fileID: 9191383388718416156}
   m_Layer: 0
-  m_Name: Beat
+  m_Name: Note
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 1
   m_ApplyActiveColorSpace: 0
---- !u!114 &5558764493000032058
+--- !u!114 &9191383388718416156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,6 +149,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4337427381277560982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c69778897fa82fa468bac269695841df, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ce4c273c4a00f441876d12e5106d2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

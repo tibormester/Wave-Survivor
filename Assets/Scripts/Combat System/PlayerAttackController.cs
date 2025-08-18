@@ -3,40 +3,39 @@ using UnityEngine;
 public class PlayerAttackController : MonoBehaviour
 {
     public Attack attackPrefab;
-    private BeatManager _beatManager;
+    private NoteManager _noteManager;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _beatManager = GetComponent<BeatManager>();
-
+        _noteManager = GetComponent<NoteManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1")){
-            Beat beat = _beatManager.GetNextBeat();
+            Note note = _noteManager.GetNextNote();
 
-            if (beat == null){
+            if (note == null){
                 return;
             }
-            Debug.Log("Beat: " + beat.hitTime);
-            if (beat.hitTime > (double)AudioSettings.dspTime){
-                HitBeat(beat);
+            Debug.Log("Note: " + note.hitTime);
+            if (note.hitTime > (double)AudioSettings.dspTime){
+                HitNote(note);
             }
         }
     }
 
-    void HitBeat(Beat beat){
-        beat.Expire();
+    void HitNote(Note note){
+        note.Expire();
         var attack = Instantiate(attackPrefab, transform.position, Quaternion.identity);
         attack.Initialize(gameObject);
 
         var wave = attack as WaveAttack;
         if (wave != null){
-            wave.waveMaxSize *= Mathf.Pow(beat.GetPercentageToHitTime(), 2f);
+            wave.waveMaxSize *= Mathf.Pow(note.GetPercentageToHitTime(), 2f);
             wave.currentRadius = 1.5f;
         }
         /**

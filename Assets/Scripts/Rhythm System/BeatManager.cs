@@ -1,64 +1,55 @@
-//Purpose is to spawn beats before their time and initilize them so that they will arrive at the correct time independent of frame rate
-//Additional purpose is to expose an API for accessing these spawned beats - specifically need to find the next beat that is due to hit
-
 using UnityEngine;
+using System;
 
 public class BeatManager : MonoBehaviour{
+    
+    //triggers when the beat is hit and carriers -int beat count, doublehit time
+    public event Action<int, double> onBeat;
+
+    [SerializeField] private float beatsPerMinute = 120f;  
+
+    [SerializeField] private double START_TIME_OFFSET_SECONDS = 0f;
+
+    private AudioSource _audioSource;
+    private double _startTime;
 
 
-    public float maxRadius = 1f; // the player's radius - belongs in the ring previewer class - one that displays the rings as they are about to arrive
+    private int _currentBeatIndex = 0;
 
-    public float previewTimeSeconds = 0.5f; // This goes into the previewer class
-
-
-    [SerializeField] private Beat _beatPrefab;
-
-    private RhythmManager _rhythmManager;
-    void Start(){
-        _rhythmManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<RhythmManager>();
-    }
-
-    private int _lastSpawnedIndex = -1;
     void Update(){
-        double startTime, hitTime;
-        while (CanNextBeatBeSpawned(out startTime, out hitTime)){
-            _lastSpawnedIndex++;
-            SpawnBeat((float)startTime, (float)hitTime);
+        while (AudioSettings.dspTime >= GetBeatTime(_currentBeatIndex)){
+            onBeat?.Invoke(_currentBeatIndex, GetBeatTime(_currentBeatIndex));
+            _currentBeatIndex++;
         }
-
     }
-
-    private bool CanNextBeatBeSpawned(out double startTime, out double hitTime){
-        int nextBeatIndex = _lastSpawnedIndex + 1;
-        hitTime = _rhythmManager.GetPatternBeatHitTime(nextBeatIndex);
-        startTime = hitTime - previewTimeSeconds;
-        if (AudioSettings.dspTime >= startTime){
-            return true;
-        }
-        return false; 
-    }
-     //Spawns the beat and configure it with the correct initial and final radius
-    private Beat SpawnBeat(float spawnTime, float hitTime){
-        var beat = Instantiate(_beatPrefab, transform);
-        beat.Initialize(spawnTime, hitTime, maxRadius, 0f);
-
-        return beat;
+    void Start(){
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.Play();
+        _startTime = AudioSettings.dspTime;
     }
 
 
-    // The public api to get the next beat that is due to hit, filtering out any beats that have already been hit
-    public Beat GetNextBeat(){
-        var beats = GetComponentsInChildren<Beat>();
-        Beat bestBeat = null;
-        foreach (var beat in beats){
-            if (beat.hitTime > Time.time){
-                return beat;
-            }
-        }
-        return bestBeat;
+
+    //returns which beat we are on since the song started
+    public double GetSongCount(){
+        double songPositionSeconds = AudioSettings.dspTime - _startTime;
+        double offsetAdjustedPositionSeconds = songPositionSeconds - START_TIME_OFFSET_SECONDS;
+        double secondsPerBeat = 60f / beatsPerMinute;
+        double beatCount = offsetAdjustedPositionSeconds / secondsPerBeat;
+        return beatCount;
+        //based on the current time, return the time converted to beats in the measure
     }
 
-   
+    //returns what time the beat should hit on based on the start time
+    public double GetBeatTime(double beat){
+        double secondsPerBeat = 60f / beatsPerMinute;
+        double beatHitTime = _startTime + START_TIME_OFFSET_SECONDS + (beat * secondsPerBeat);
+        return beatHitTime;
+    }
+
+    
+
+
 
     
 }
