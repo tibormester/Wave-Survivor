@@ -9,7 +9,7 @@ public class BoostAbility : MonoBehaviour, IMovementDecorator, IMovementAbility
     public float boostFuelCostSecond = 25f;
 
     private bool isBoosting = false;
-    private float noteAccuracy = 0f;
+    private float _noteAccuracy = 0f;
     private FuelManager _fuelManager;
     private NoteManager _noteManager;
     void Start(){
@@ -19,8 +19,8 @@ public class BoostAbility : MonoBehaviour, IMovementDecorator, IMovementAbility
 
     public float ModifyBaseSpeed(float baseSpeed)
     {
-        if (isBoosting && _fuelManager.TryUseFuel(boostFuelCostSecond * Time.deltaTime)){
-            return baseSpeed * (boostMultiplier + (Mathf.Max(noteAccuracy -0.8f, 0f) * 2f));
+        if (isBoosting && _fuelManager.TryUseFuel(boostFuelCostSecond * (1 - (Mathf.Max(_noteAccuracy -0.8f, 0f) * 3f)) * Time.deltaTime)){
+            return baseSpeed * (boostMultiplier + (Mathf.Max(_noteAccuracy -0.8f, 0f) * 3f));
         }
         else{
             return baseSpeed;
@@ -35,7 +35,7 @@ public class BoostAbility : MonoBehaviour, IMovementDecorator, IMovementAbility
     void Update(){
         if (Input.GetKeyDown(KeyCode.LeftShift)){
             isBoosting = true;
-            noteAccuracy = _noteManager.GetNextNote().GetPercentageToHitTime();
+            _noteAccuracy = _noteManager.GetNextNote().GetPercentageToHitTime();
         }
         if (!Input.GetKey(KeyCode.LeftShift)){
             isBoosting = false;
