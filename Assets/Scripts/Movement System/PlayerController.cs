@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class PlayerMovementInputCollector : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     // Update is called once per frame
-    private MovementController _movementController;
-
+    private MovementController _movementController;    
     void Start()
     {
         _movementController = GetComponent<MovementController>();
     }
 
-    public void Update()
+    void Update()
     {   
         _movementController.movementInput = checkInputs();
+
     }
 
     private Vector3 checkInputs()

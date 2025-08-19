@@ -8,13 +8,13 @@ public class LineRendererUtility
 	//	- make sure it has a valid material
 	//	- control the width of it however you like
 	//	- make sure it is set to loop
-	public static void MakeRing( LineRenderer lineRenderer, float radius, int segments)
+	public static void MakeRing( LineRenderer lineRenderer, float radius, int segments, float minAngle = 0f, float maxAngle = Mathf.PI * 2f)
 	{
 		Vector3[] points = new Vector3[segments];
 
 		for (int i = 0; i < segments; i++)
 		{
-			float angle = (i * Mathf.PI * 2) / segments;
+			float angle = minAngle + ((maxAngle - minAngle) * ((float)i / (float)segments));
 
 			float x = Mathf.Cos( angle) * radius;
 			float y = Mathf.Sin( angle) * radius;
