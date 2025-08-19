@@ -30,7 +30,7 @@ public class UpdatedWaveAttack : Attack
     {
         currentRadius += waveSpeed * Time.deltaTime;
         LineRendererUtility.MakeRing(_lineRenderer, currentRadius, RING_SEGMENTS, minAngle, maxAngle);
-
+        CheckForCollisions();
         if (currentRadius > waveMaxSize){
             Destroy(gameObject);
         }
