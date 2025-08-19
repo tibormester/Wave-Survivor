@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 1213995941334148290}
   - component: {fileID: 4707008790046520325}
   - component: {fileID: 8258517533536953228}
+  - component: {fileID: 7217447142034721069}
   m_Layer: 0
   m_Name: Player Character
   m_TagString: Player
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  isInvincible: 0
 --- !u!114 &8853277844914393396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +453,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7580453550287275962}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcea9bbeb495d4a49989656a3ecd3858, type: 3}
   m_Name: 
@@ -459,3 +461,17 @@ MonoBehaviour:
   dashDistance: 3.5
   dashDuration: 0.6
   dashFuelCost: 25
+--- !u!114 &7217447142034721069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580453550287275962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b652e936319b2bb40bdc62cb3a8f06c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkDuration: 0.1
+  blinkFuelCost: 25

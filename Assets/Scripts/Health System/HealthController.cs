@@ -6,6 +6,7 @@ public class HealthController : MonoBehaviour
 {
     
     public int maxHealth = 100;
+    public bool isInvincible = false;
     private int _health;
 
     public event Action healthZeroed;
@@ -26,10 +27,9 @@ public class HealthController : MonoBehaviour
             } else {
                 Heal(delta, source);
             }
-        } else if (delta < 0 && _health > 0) {
+        } else if (delta < 0 && _health > 0 && !isInvincible) {
             TakeDamage(-delta, source);
         } else{
-            Debug.LogWarning("HealthController: AdjustHealth called with invalid delta");
             return;
         }
     }
