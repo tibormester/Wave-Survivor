@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 6
+  isInvincible: 0
 --- !u!114 &3001091054544913039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3702865941a9dc647a7095a633d44b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackDamageMultiplier: 1
-  knockbackSpeed: 1
+  knockbackDamageMultiplier: 3
+  knockbackSpeed: 2
   maxKnobackTime: 1.5
