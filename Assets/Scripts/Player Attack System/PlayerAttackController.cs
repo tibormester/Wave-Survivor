@@ -25,7 +25,7 @@ public class AttackAbilityManager : MonoBehaviour
         var attack = Instantiate(attackPrefab, transform.position, Quaternion.identity);
         attack.Initialize(gameObject);
 
-        var wave = attack as UpdatedWaveAttack;
+        var wave = attack as WaveAttack;
         if (wave != null){
             wave.waveMaxSize *= Mathf.Pow(note.GetPercentageToHitTime(), 2f);
             wave.currentRadius = 1.5f;

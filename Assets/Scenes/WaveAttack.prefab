@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6111181173088733535}
   - component: {fileID: 5864121141499434420}
-  - component: {fileID: 2580802796212126766}
   - component: {fileID: 754488148684356989}
   - component: {fileID: 6098047081990147111}
+  - component: {fileID: 8025355523083294077}
   m_Layer: 0
-  m_Name: Circular Wave Attack
+  m_Name: WaveAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,24 +140,8 @@ LineRenderer:
     generateLightingData: 0
   m_MaskInteraction: 0
   m_UseWorldSpace: 0
-  m_Loop: 1
+  m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &2580802796212126766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6958763139457071017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa2bdd3efadb5447b0158755ac2964e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveSpeed: 5
-  waveMaxSize: 15
-  waveDamage: 2
-  currentRadius: 0
 --- !u!58 &754488148684356989
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -221,3 +205,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8025355523083294077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958763139457071017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48c80dc8d3cdfb43ba316abc92dfae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveSpeed: 3
+  waveMaxSize: 15
+  waveDamage: 5
+  waveWidth: 0.2
+  minAngle: 0
+  maxAngle: 45
+  currentRadius: 0
