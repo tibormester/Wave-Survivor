@@ -10,6 +10,6 @@ public class FuelVisualizer : MonoBehaviour{
     }
 
     void Update(){
-        LineRendererUtility.MakeRing(_lineRenderer, 0.6f, 50, 0f, (_fuelManager.Fuel / _fuelManager.MaxFuel) * Mathf.PI * 2f);
+        LineRendererUtility.MakeRing(_lineRenderer, 0.6f, 50, 0f, (_fuelManager.Fuel / _fuelManager.MaxFuel) * 360f);
     }
 }
