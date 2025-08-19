@@ -32,7 +32,7 @@ public class Note : MonoBehaviour
 
     void Update(){
         float progressPercentage = GetPercentageToHitTime();
-        if (progressPercentage >= 1f){
+        if (progressPercentage >= 1.1f){
             Expire();
         } else {
             float radius = Mathf.Lerp((float)initialRadius, (float)finalRadius, progressPercentage);

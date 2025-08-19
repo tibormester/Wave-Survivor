@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-public class WaveAttack : Attack
+public class WaveAttack : MonoBehaviour
 {
     public float waveSpeed = 1f;
     public float waveMaxSize = 5f;
@@ -12,11 +12,15 @@ public class WaveAttack : Attack
     public float minAngle = 0f;
     public float maxAngle = 45f;
 
+    public GameObject sourceObject;
+
     private HashSet<HealthController> _alreadyHit = new HashSet<HealthController>();
     private LineRenderer _lineRenderer;
     public float currentRadius = 0f;
 
     const int RING_SEGMENTS = 100;
+
+
 
     void Start(){
         _lineRenderer = GetComponent<LineRenderer>();
@@ -58,11 +62,11 @@ public class WaveAttack : Attack
         if (other == null) return;
 
         // Ignore source and its hierarchy
-        if (SourceObject != null && other.transform.IsChildOf(SourceObject.transform)) return;
+        if (sourceObject != null && other.transform.IsChildOf(sourceObject.transform)) return;
 
         var health = other.GetComponentInParent<HealthController>();
         if (health == null) return;
-        if (SourceObject != null && health.transform.IsChildOf(SourceObject.transform)) return;
+        if (sourceObject != null && health.transform.IsChildOf(sourceObject.transform)) return;
         if (_alreadyHit.Contains(health)) return;
 
         health.AdjustHealth(-(int)waveDamage, gameObject);

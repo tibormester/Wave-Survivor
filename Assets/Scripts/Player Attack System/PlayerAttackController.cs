@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class AttackAbilityManager : MonoBehaviour
 {
-    public Attack attackPrefab;
+    public WaveAttack attackPrefab;
     private NoteManager _noteManager;
+    
 
     void Start()
     {
@@ -23,15 +24,13 @@ public class AttackAbilityManager : MonoBehaviour
 
         note.Expire();
         var attack = Instantiate(attackPrefab, transform.position, Quaternion.identity);
-        attack.Initialize(gameObject);
+        attack.sourceObject = gameObject;
 
-        var wave = attack as WaveAttack;
-        if (wave != null){
-            wave.waveMaxSize *= Mathf.Pow(note.GetPercentageToHitTime(), 2f);
-            wave.currentRadius = 1.5f;
-            wave.minAngle = GetMouseAngle() - 45f;
-            wave.maxAngle = GetMouseAngle() + 45f;
-        }
+        attack.waveMaxSize *= Mathf.Pow(note.GetPercentageToHitTime(), 2f);
+        attack.currentRadius = 1.5f;
+        attack.minAngle = GetMouseAngle() - 45f;
+        attack.maxAngle = GetMouseAngle() + 45f;
+        
 
         return true;
     }
