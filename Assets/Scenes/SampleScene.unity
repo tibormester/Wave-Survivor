@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c34a33d999d1743a4708a101e6fbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7342849384872623845, guid: 274e4b4e218e7134685e1d26b8810ef9, type: 3}
+  enemyPrefab: {fileID: 7342849384872623845, guid: e6bd8b0a0a7285e4e815abbc646573cf, type: 3}
 --- !u!82 &697152008
 AudioSource:
   m_ObjectHideFlags: 0
@@ -795,6 +795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beatsPerMinute: 120
   START_TIME_OFFSET_SECONDS: 0
+  _currentBeatIndex: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

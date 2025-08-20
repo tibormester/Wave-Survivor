@@ -14,7 +14,7 @@ public class BeatManager : MonoBehaviour{
     private double _startTime;
 
 
-    private int _currentBeatIndex = 0;
+    public int _currentBeatIndex = 0;
 
     void Update(){
         while (AudioSettings.dspTime >= GetBeatTime(_currentBeatIndex)){
@@ -28,22 +28,22 @@ public class BeatManager : MonoBehaviour{
         _startTime = AudioSettings.dspTime;
     }
 
-
+    public double GetSecondsPerBeat(){
+        return 60f / beatsPerMinute;
+    }
 
     //returns which beat we are on since the song started
     public double GetSongCount(){
         double songPositionSeconds = AudioSettings.dspTime - _startTime;
         double offsetAdjustedPositionSeconds = songPositionSeconds - START_TIME_OFFSET_SECONDS;
-        double secondsPerBeat = 60f / beatsPerMinute;
-        double beatCount = offsetAdjustedPositionSeconds / secondsPerBeat;
+        double beatCount = offsetAdjustedPositionSeconds /  GetSecondsPerBeat();
         return beatCount;
         //based on the current time, return the time converted to beats in the measure
     }
 
     //returns what time the beat should hit on based on the start time
     public double GetBeatTime(double beat){
-        double secondsPerBeat = 60f / beatsPerMinute;
-        double beatHitTime = _startTime + START_TIME_OFFSET_SECONDS + (beat * secondsPerBeat);
+        double beatHitTime = _startTime + START_TIME_OFFSET_SECONDS + (beat *  GetSecondsPerBeat());
         return beatHitTime;
     }
 
