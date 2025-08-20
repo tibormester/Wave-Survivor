@@ -12,7 +12,7 @@ public class StraightStepState : MonoBehaviour, IEnemyState{
         _movementController = GetComponent<MovementController>();
     }
     public void Enter(){
-        _targetPosition = GetComponent<WaitBeatState>()._targetPosition;
+        _targetPosition = GetComponent<WaitNoteState>()._targetPosition;
     }
 
     public void Tick(){

@@ -23,7 +23,7 @@ public class NoteManager : MonoBehaviour{
         _beatManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<BeatManager>();
     }
 
-    public int _lastSpawnedIndex = -1;
+    private int _lastSpawnedIndex = -1;
     void Update(){
 
         double startTime, hitTime;

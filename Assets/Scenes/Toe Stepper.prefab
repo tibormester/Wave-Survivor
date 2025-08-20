@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 8711883855509859261}
   - component: {fileID: 1188812625501705710}
   m_Layer: 0
-  m_Name: ToeStepper
+  m_Name: Toe Stepper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -46,6 +46,6 @@ public class EnemySuicideBomberState : MonoBehaviour, IEnemyState{
     }
 
     public int GetPriority(){
-        return 10;
+        return 2;
     }
 }

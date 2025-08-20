@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class WaitBeatState : MonoBehaviour, IEnemyState{
+public class WaitNoteState : MonoBehaviour, IEnemyState{
 
     [SerializeField] private float waitTimeBeats = 0.25f;
+    [SerializeField] private float noteDivisor = 1f;
     public Vector3 _targetPosition {get; private set;}
 
     private GameObject _player;
@@ -27,6 +28,9 @@ public class WaitBeatState : MonoBehaviour, IEnemyState{
     }
 
     public bool IsValid(){
+        if (_noteManager.currentNoteIndex % noteDivisor != 0){
+            return false;
+        }
         double previousNoteHitTime = _noteManager.GetNoteHitTimeFromRhythm(_noteManager.currentNoteIndex - 1);
         return AudioSettings.dspTime <= previousNoteHitTime + (_noteManager._beatManager.GetSecondsPerBeat() * waitTimeBeats);
     }

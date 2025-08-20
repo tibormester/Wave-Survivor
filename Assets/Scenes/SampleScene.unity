@@ -684,6 +684,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7342849384872623845, guid: e6bd8b0a0a7285e4e815abbc646573cf, type: 3}
+  enemyPrefabs:
+  - {fileID: 7342849384872623845, guid: ee1f501fd933b4047a31dbf7128a1ea8, type: 3}
+  - {fileID: 7342849384872623845, guid: e6bd8b0a0a7285e4e815abbc646573cf, type: 3}
 --- !u!82 &697152008
 AudioSource:
   m_ObjectHideFlags: 0

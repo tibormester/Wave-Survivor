@@ -217,10 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48c80dc8d3cdfb43ba316abc92dfae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSpeed: 3
+  waveSpeed: 7
   waveMaxSize: 15
   waveDamage: 5
   waveWidth: 0.2
   minAngle: 0
   maxAngle: 45
+  sourceObject: {fileID: 0}
   currentRadius: 0
