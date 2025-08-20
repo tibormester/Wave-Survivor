@@ -2,7 +2,7 @@
 //Additional purpose is to expose an API for accessing these spawned beats - specifically need to find the next beat that is due to hit
 
 using UnityEngine;
-
+using System;
 public class NoteManager : MonoBehaviour{
 
 
@@ -10,6 +10,8 @@ public class NoteManager : MonoBehaviour{
 
     public float previewTimeSeconds = 0.5f; // This goes into the previewer class
     public int currentNoteIndex = 0;
+
+    public event Action OnNoteHit;
 
     //Must be sorted in chronological order - the beats are values indicate what count they appear on
     [SerializeField] private float[] notePattern = {1f, 1.5f, 2f, 3f, 3.75f, 4f};
@@ -34,6 +36,7 @@ public class NoteManager : MonoBehaviour{
 
         while( GetNoteHitTimeFromRhythm(currentNoteIndex) <= AudioSettings.dspTime){
             currentNoteIndex++;
+            OnNoteHit?.Invoke();
         }
     }
 

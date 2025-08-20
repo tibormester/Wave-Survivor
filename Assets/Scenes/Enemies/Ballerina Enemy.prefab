@@ -20,11 +20,10 @@ GameObject:
   - component: {fileID: 7843668394323664373}
   - component: {fileID: 1715444727262828931}
   - component: {fileID: 1709881570149690525}
-  - component: {fileID: 9119676727207323836}
-  - component: {fileID: 4113050018410572245}
-  - component: {fileID: 1136248245163241241}
+  - component: {fileID: 6059811020116730190}
+  - component: {fileID: 4198776265313306496}
   m_Layer: 0
-  m_Name: Waltzing Bombers
+  m_Name: Ballerina Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 7342849384872623845}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.301, y: 1.224, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba309194db3ad334bbb24211f8d8a990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.5
+  moveSpeed: 3
   movementInput: {x: 0, y: 0, z: 0}
 --- !u!114 &1738629562834376
 MonoBehaviour:
@@ -272,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d707f60b9f560334d8ed2345f2724362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9119676727207323836
+--- !u!114 &6059811020116730190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,9 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296405998401c26418f73b48cffecf38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTimeBeats: 0.125
-  noteDivisor: 3
---- !u!114 &4113050018410572245
+  waitTimeBeats: 0.05
+  noteDivisor: 4
+--- !u!114 &4198776265313306496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,23 +294,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7342849384872623845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0d9fc4d3fae9fb43b03477f55c70113, type: 3}
+  m_Script: {fileID: 11500000, guid: 61d123c6e5c117d4e9ab5b76849e1822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  angleOffset: 30
---- !u!114 &1136248245163241241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7342849384872623845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 804db63cfd8ea2846b515575fbd1fcae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  suicideBomberNotes: 3
-  suicideDistance: 3
-  explosionPrefab: {fileID: 6958763139457071017, guid: 5020123e551f07447a668393a3fa0ef8, type: 3}
+  _attackPrefab: {fileID: 8025355523083294077, guid: 0fd281ef2eabf8240acf0ebc94703233, type: 3}
+  _rotationSpeed: 50

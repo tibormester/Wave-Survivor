@@ -54,7 +54,8 @@ public class WaveAttack : MonoBehaviour
     }
 
     private bool IsInArc(Vector3 point){
-        var angle = Mathf.Atan2(point.y - transform.position.y, point.x - transform.position.x) * Mathf.Rad2Deg;
+        var localPoint = transform.InverseTransformPoint(point);
+        var angle = Mathf.Atan2(localPoint.y, localPoint.x) * Mathf.Rad2Deg;
         return angle >= minAngle && angle <= maxAngle;
     }
 
