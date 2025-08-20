@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
     
     const float SPAWN_RADIUS = 25f;
     private int _waveNumber = 0;
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void SpawnEnemy(Vector3 spawnPoint){
-        var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        var enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoint, Quaternion.identity);
         enemy.GetComponent<HealthController>().healthZeroed += OnEnemyDeath;
         _enemyCount++;
     }

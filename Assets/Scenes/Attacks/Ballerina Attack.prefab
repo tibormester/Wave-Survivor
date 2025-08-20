@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6098047081990147111}
   - component: {fileID: 8025355523083294077}
   m_Layer: 0
-  m_Name: WaveAttack
+  m_Name: Ballerina Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.2798195
+        value: 0.28686905
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -217,10 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48c80dc8d3cdfb43ba316abc92dfae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSpeed: 3
+  waveSpeed: 12
   waveMaxSize: 15
   waveDamage: 5
-  waveWidth: 0.2
-  minAngle: 0
-  maxAngle: 45
+  waveWidth: 0.45
+  minAngle: -8
+  maxAngle: 8
+  sourceObject: {fileID: 0}
   currentRadius: 0

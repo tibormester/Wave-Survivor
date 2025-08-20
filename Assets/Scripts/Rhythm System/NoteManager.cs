@@ -2,13 +2,16 @@
 //Additional purpose is to expose an API for accessing these spawned beats - specifically need to find the next beat that is due to hit
 
 using UnityEngine;
-
+using System;
 public class NoteManager : MonoBehaviour{
 
 
     public float maxRadius = 1f; // the player's radius - belongs in the ring previewer class - one that displays the rings as they are about to arrive
 
     public float previewTimeSeconds = 0.5f; // This goes into the previewer class
+    public int currentNoteIndex = 0;
+
+    public event Action OnNoteHit;
 
     //Must be sorted in chronological order - the beats are values indicate what count they appear on
     [SerializeField] private float[] notePattern = {1f, 1.5f, 2f, 3f, 3.75f, 4f};
@@ -17,19 +20,24 @@ public class NoteManager : MonoBehaviour{
 
     [SerializeField] private Note _notePrefab;
 
-    private BeatManager _beatManager;
+    public BeatManager _beatManager {get; private set;}
     void Start(){
         _beatManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<BeatManager>();
     }
 
     private int _lastSpawnedIndex = -1;
     void Update(){
+
         double startTime, hitTime;
         while (CanNextNoteBeSpawned(out startTime, out hitTime)){
             _lastSpawnedIndex++;
             SpawnNote((float)startTime, (float)hitTime);
         }
 
+        while( GetNoteHitTimeFromRhythm(currentNoteIndex) <= AudioSettings.dspTime){
+            currentNoteIndex++;
+            OnNoteHit?.Invoke();
+        }
     }
 
     private bool CanNextNoteBeSpawned(out double startTime, out double hitTime){
