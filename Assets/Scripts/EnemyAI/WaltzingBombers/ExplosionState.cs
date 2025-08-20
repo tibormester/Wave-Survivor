@@ -7,6 +7,7 @@ public class ExplosionState : MonoBehaviour, IEnemyState{
     public GameObject explosionPrefab;
 
     private int _startNoteIndex;
+    private bool _isExploding = false;
   
 
     private GameObject _player;
@@ -24,7 +25,8 @@ public class ExplosionState : MonoBehaviour, IEnemyState{
     }
 
     public void Tick(){
-        if (_noteManager.currentNoteIndex - _startNoteIndex >= suicideBomberNotes){
+        if (_noteManager.currentNoteIndex - _startNoteIndex >= suicideBomberNotes && !_isExploding){
+            _isExploding = true;
             var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             GetComponent<HealthController>().SetHealth(0);
         }
