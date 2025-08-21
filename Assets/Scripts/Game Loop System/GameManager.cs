@@ -1,15 +1,19 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
     public GameObject[] enemyPrefabs;
     
     const float SPAWN_RADIUS = 25f;
     private int _waveNumber = 0;
     private int _enemyCount = 0;
 
+    private LootSelectionManager _lootSelectionManager;
+    const int LOOT_WAVE_INTERVAL = 1;
+
     void Start(){
+        _lootSelectionManager = GetComponent<LootSelectionManager>();
         NextWave();
     }
 
@@ -26,8 +30,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void NextWave(){
+    private async Task NextWave(){
         _waveNumber++;
+        if (_waveNumber % LOOT_WAVE_INTERVAL == 0){
+            await _lootSelectionManager.WaitForLootSelection();
+        }
         var spawnPoints = GetSpawnPoints(_waveNumber);
         foreach (var spawnPoint in spawnPoints){
             SpawnEnemy(spawnPoint);
