@@ -6,7 +6,7 @@ public class LootSelectionManager : MonoBehaviour{
     [SerializeField] private List<LootObject> lootObjects;
     [SerializeField] private LootCard lootCardPrefab;
     public TaskCompletionSource<bool> lootSelected;
-    [SerializeField] private Vector3 _lootCardOffset = new Vector3(10f, 0, 0);
+    [SerializeField] private Vector3 _lootCardOffset = new Vector3(20f, 0, 0);
     private GameObject _player;
     private List<LootCard> _lootCards;
 
@@ -19,7 +19,7 @@ public class LootSelectionManager : MonoBehaviour{
         
         _lootCards = new List<LootCard>();
         for (int i = -1; i <= 1; i++) {
-            _lootCards.Add(CreateRandomLootCard(transform.position + i * _lootCardOffset));
+            _lootCards.Add(CreateRandomLootCard(new Vector3(0f,0f,-5f) + i * _lootCardOffset));
         }
         
         return lootSelected.Task;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3792456878093718495}
   - component: {fileID: 8611113383672801710}
   - component: {fileID: 3386446239234030766}
+  - component: {fileID: 635581492398078281}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -181,5 +182,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 05e85a751ef811b4ba1b70404d61b125, type: 2}
   - {fileID: 11400000, guid: fe2dec0160de51e46ab85320d776197d, type: 2}
   - {fileID: 11400000, guid: 45c3be181e9879440884893cf89404ba, type: 2}
-  lootCardPrefab: {fileID: -1361050335204091392, guid: 13bb6b5804f6ea34986fd2a5b209826e, type: 3}
+  lootCardPrefab: {fileID: 351681004799695347, guid: 5638a405aaf4ada4492e20b8648e946c, type: 3}
   _lootCardOffset: {x: 10, y: 0, z: 0}
+--- !u!114 &635581492398078281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709407070757057914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10

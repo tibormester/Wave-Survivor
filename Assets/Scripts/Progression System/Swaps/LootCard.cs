@@ -2,8 +2,9 @@ using UnityEngine;
 using System;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class LootCard : MonoBehaviour{
+public class LootCard : MonoBehaviour, IPointerClickHandler{
     public LootObject lootObject;
 
     private TextMeshProUGUI _nameText;
@@ -12,10 +13,12 @@ public class LootCard : MonoBehaviour{
 
     public event Action<LootObject> LootSelected;
 
-    void Start(){
-        _nameText = GetComponentInChildren<TextMeshProUGUI>();
-        _iconImage = GetComponentInChildren<Image>();
-        _descriptionText = GetComponentInChildren<TextMeshProUGUI>();
+    private void Awake() {
+        _nameText = transform.Find("Name").GetComponent<TextMeshProUGUI>();
+        _iconImage = transform.Find("Icon").GetComponent<Image>();
+        _descriptionText = transform.Find("Description").GetComponent<TextMeshProUGUI>();
+        GetComponent<Canvas>().worldCamera = Camera.main;
+        //Does Camera.main work? or do i need to get it from the main camera tag?
     }
 
     public void Initialize(LootObject lootObject){
@@ -24,7 +27,11 @@ public class LootCard : MonoBehaviour{
         _descriptionText.text = lootObject.description;
     }
 
-    
+    public void OnPointerClick(PointerEventData eventData){
+        Debug.Log("OnPointerClick:\n" + eventData);
+        OnSelect();
+    }
+
     public void OnSelect(){
         LootSelected?.Invoke(lootObject);
     }
