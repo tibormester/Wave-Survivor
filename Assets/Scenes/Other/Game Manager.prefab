@@ -184,8 +184,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 05e85a751ef811b4ba1b70404d61b125, type: 2}
   - {fileID: 11400000, guid: fe2dec0160de51e46ab85320d776197d, type: 2}
   - {fileID: 11400000, guid: 45c3be181e9879440884893cf89404ba, type: 2}
+  - {fileID: 11400000, guid: 97010dd309a8b0244985ca38f6ef45b2, type: 2}
+  - {fileID: 11400000, guid: 946809933b472064ea8c51c7054a6cd2, type: 2}
+  - {fileID: 11400000, guid: ad730e1859f09f541967d89644074ade, type: 2}
   lootCardPrefab: {fileID: 351681004799695347, guid: 5638a405aaf4ada4492e20b8648e946c, type: 3}
-  _lootCardOffset: {x: 10, y: 0}
 --- !u!114 &7881189929662221829
 MonoBehaviour:
   m_ObjectHideFlags: 0

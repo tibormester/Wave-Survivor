@@ -672,10 +672,6 @@ PrefabInstance:
       value: Game Manager
       objectReference: {fileID: 0}
     - target: {fileID: 3386446239234030766, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
-      propertyPath: _lootCardOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386446239234030766, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
       propertyPath: lootSelectionCanvas
       value: 
       objectReference: {fileID: 915867755}

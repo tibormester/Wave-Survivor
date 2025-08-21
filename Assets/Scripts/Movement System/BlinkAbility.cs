@@ -35,8 +35,12 @@ public class BlinkAbility : MonoBehaviour, IMovementDecorator, IMovementAbility
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _fuelManager.TryUseFuel(blinkFuelCost)){
-            StartCoroutine(Blink());
+        if (Input.GetKeyDown(KeyCode.LeftShift)){
+            Note note = _noteManager.GetNextNote();
+            _noteAccuracy = note?.GetPercentageToHitTime() ?? 0f;
+            if (_fuelManager.TryUseFuel(blinkFuelCost * (1 - (Mathf.Max(_noteAccuracy -0.8f, 0f) * 3f)))){
+                StartCoroutine(Blink());
+            }
         }
     }
     private IEnumerator Blink(){

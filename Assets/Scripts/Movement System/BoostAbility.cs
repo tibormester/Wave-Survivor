@@ -35,7 +35,8 @@ public class BoostAbility : MonoBehaviour, IMovementDecorator, IMovementAbility
     void Update(){
         if (Input.GetKeyDown(KeyCode.LeftShift)){
             isBoosting = true;
-            _noteAccuracy = _noteManager.GetNextNote().GetPercentageToHitTime();
+            Note note = _noteManager.GetNextNote();
+            _noteAccuracy = note?.GetPercentageToHitTime() ?? 0f;
         }
         if (!Input.GetKey(KeyCode.LeftShift)){
             isBoosting = false;

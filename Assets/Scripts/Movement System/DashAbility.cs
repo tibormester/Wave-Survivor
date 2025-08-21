@@ -50,9 +50,13 @@ public class DashAbility : MonoBehaviour, IMovementDecorator, IMovementAbility
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _movementController.movementInput != Vector3.zero && _fuelManager.TryUseFuel(dashFuelCost)){
-            _queuedDash += _movementController.movementInput * dashDistance;
-            _dashTimer = 0f;
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _movementController.movementInput != Vector3.zero){
+            Note note = _noteManager.GetNextNote();
+            _noteAccuracy = note?.GetPercentageToHitTime() ?? 0f;
+            if (_fuelManager.TryUseFuel(dashFuelCost * (1 - (Mathf.Max(_noteAccuracy -0.8f, 0f) * 3f)))){
+                _queuedDash += _movementController.movementInput * dashDistance;
+                _dashTimer = 0f;
+            }
         }
     }
 
