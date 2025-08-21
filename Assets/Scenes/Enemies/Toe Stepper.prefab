@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 9119676727207323836}
   - component: {fileID: 8711883855509859261}
   - component: {fileID: 1188812625501705710}
+  - component: {fileID: -2505479016951371403}
   m_Layer: 0
   m_Name: Toe Stepper
   m_TagString: Untagged
@@ -317,3 +318,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &-2505479016951371403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342849384872623845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6fe78e4e3cab3d4b943f5b3a52bd157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - {fileID: 4082527662357926299, guid: 6e2ebf77906ffec4c834aa31538fab1f, type: 3}
+  - {fileID: 4082527662357926299, guid: 6e2ebf77906ffec4c834aa31538fab1f, type: 3}
+  - {fileID: 4082527662357926299, guid: 58010e7099daacb439a80216a78a844f, type: 3}
+  - {fileID: 4082527662357926299, guid: 58010e7099daacb439a80216a78a844f, type: 3}
+  - {fileID: 4082527662357926299, guid: def4bedd3929daa4fb58c6c8df3c923a, type: 3}
+  - {fileID: 4082527662357926299, guid: 7d9d37aed59c3824fb1520943e7b3dc0, type: 3}
+  - {fileID: 4082527662357926299, guid: 24a84d489c6549f4e8fbab45e9d49479, type: 3}
+  - {fileID: 4082527662357926299, guid: 6690e942f8316c14caf62e0ea5a96010, type: 3}
+  - {fileID: 4082527662357926299, guid: e08db8e12bd81d84b963052c46bc1158, type: 3}
+  - {fileID: 4082527662357926299, guid: cb046062f726c824ca1b94a5947d7a4d, type: 3}
+  - {fileID: 4082527662357926299, guid: cbcc9fccad8caa34c86be4534aa8d5cf, type: 3}
+  lootDropChance: 1

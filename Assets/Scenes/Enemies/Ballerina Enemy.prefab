@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 1709881570149690525}
   - component: {fileID: 6059811020116730190}
   - component: {fileID: 4198776265313306496}
+  - component: {fileID: 3674343349402037023}
   m_Layer: 0
   m_Name: Ballerina Enemy
   m_TagString: Untagged
@@ -299,3 +300,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackPrefab: {fileID: 8025355523083294077, guid: 0fd281ef2eabf8240acf0ebc94703233, type: 3}
   _rotationSpeed: 50
+--- !u!114 &3674343349402037023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342849384872623845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6fe78e4e3cab3d4b943f5b3a52bd157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - {fileID: 4082527662357926299, guid: 6e2ebf77906ffec4c834aa31538fab1f, type: 3}
+  - {fileID: 4082527662357926299, guid: 6e2ebf77906ffec4c834aa31538fab1f, type: 3}
+  - {fileID: 4082527662357926299, guid: 58010e7099daacb439a80216a78a844f, type: 3}
+  - {fileID: 4082527662357926299, guid: 58010e7099daacb439a80216a78a844f, type: 3}
+  - {fileID: 4082527662357926299, guid: def4bedd3929daa4fb58c6c8df3c923a, type: 3}
+  - {fileID: 4082527662357926299, guid: 7d9d37aed59c3824fb1520943e7b3dc0, type: 3}
+  - {fileID: 4082527662357926299, guid: 24a84d489c6549f4e8fbab45e9d49479, type: 3}
+  - {fileID: 4082527662357926299, guid: 6690e942f8316c14caf62e0ea5a96010, type: 3}
+  - {fileID: 4082527662357926299, guid: e08db8e12bd81d84b963052c46bc1158, type: 3}
+  - {fileID: 4082527662357926299, guid: cb046062f726c824ca1b94a5947d7a4d, type: 3}
+  - {fileID: 4082527662357926299, guid: cbcc9fccad8caa34c86be4534aa8d5cf, type: 3}
+  lootDropChance: 1

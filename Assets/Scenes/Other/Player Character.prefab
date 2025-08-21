@@ -169,6 +169,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 8025355523083294077, guid: e62f90fa4b6abd84fb93c3d4b2744a51, type: 3}
+  attackDamage: 1
+  attackSpeed: 3
+  attackRange: 10
+  attackSpread: 30
 --- !u!114 &2798735277304774873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxRadius: 0.5
   previewTimeSeconds: 1
+  currentNoteIndex: 0
   notePattern:
   - 1
   - 3

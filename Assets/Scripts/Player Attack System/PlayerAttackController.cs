@@ -32,7 +32,7 @@ public class PlayerAttackController : MonoBehaviour, IUpgradeable
         attack.sourceObject = gameObject;
 
 
-        float qualityMultiplier = Mathf.Min(Mathf.Pow(note.GetPercentageToHitTime(), 2f), 1f);
+        float qualityMultiplier = Mathf.Max(Mathf.Pow(note.GetPercentageToHitTime(), 2f), 1f);
         attack.InitializeAttack(attackDamage * qualityMultiplier, attackSpeed * qualityMultiplier, attackRange * qualityMultiplier, attackSpread * qualityMultiplier, GetMouseAngle());
 
         
