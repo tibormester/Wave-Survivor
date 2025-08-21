@@ -1,8 +1,9 @@
 using UnityEngine;
 using System;
+using Game.ProgressionSystem;
 
 //TODO this class is pretty messy, but it basically validates adjusting the health to be within 0 to maxHealth and calls the right components when that happns
-public class HealthController : MonoBehaviour
+public class HealthController : MonoBehaviour, IUpgradeable
 {
     
     public int maxHealth = 100;
@@ -56,4 +57,14 @@ public class HealthController : MonoBehaviour
         }
     }
 
+    public void Upgrade(UpgradeType upgradeType){
+        switch(upgradeType){
+            case UpgradeType.MaxHealth:
+                maxHealth += 10;
+                break;
+            case UpgradeType.CurrentHealth:
+                _health = maxHealth;
+                break;
+        }
+    }
 }

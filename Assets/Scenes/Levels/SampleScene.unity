@@ -492,6 +492,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8707656163569756023, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: attackRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707656163569756023, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: attackSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707656163569756023, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: attackSpread
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -703,6 +715,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 7342849384872623845, guid: ee1f501fd933b4047a31dbf7128a1ea8, type: 3}
   - {fileID: 7342849384872623845, guid: e6bd8b0a0a7285e4e815abbc646573cf, type: 3}
+  - {fileID: 7342849384872623845, guid: ef41cde7fa3947043b2667141d5f1b01, type: 3}
 --- !u!82 &697152008
 AudioSource:
   m_ObjectHideFlags: 0

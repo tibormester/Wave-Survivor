@@ -8,9 +8,11 @@ public class WaveAttack : MonoBehaviour
     public float waveMaxSize = 5f;
     public float waveDamage = 1f;
 
-    public float waveWidth = 0.2f;
     public float minAngle = 0f;
     public float maxAngle = 45f;
+
+    public float waveWidth = 0.5f;
+    
 
     public GameObject sourceObject;
 
@@ -20,7 +22,13 @@ public class WaveAttack : MonoBehaviour
 
     const int RING_SEGMENTS = 100;
 
-
+    public void InitializeAttack(float damage, float speed, float range, float spread, float centerAngle){
+        waveDamage = damage;
+        waveSpeed = speed;
+        waveMaxSize = range;
+        minAngle = centerAngle - spread / 2f;
+        maxAngle = centerAngle + spread / 2f;
+    }
 
     void Start(){
         _lineRenderer = GetComponent<LineRenderer>();
@@ -56,7 +64,9 @@ public class WaveAttack : MonoBehaviour
     private bool IsInArc(Vector3 point){
         var localPoint = transform.InverseTransformPoint(point);
         var angle = Mathf.Atan2(localPoint.y, localPoint.x) * Mathf.Rad2Deg;
-        return angle >= minAngle && angle <= maxAngle;
+        //want to make the angle more forgiving since the midpoint might be outside but the collider overlaps, but the extra angle buffer needs to decrease as the wave grows
+        var angleBuffer = Mathf.Lerp(0f, 10f, currentRadius / waveMaxSize);
+        return angle >= (minAngle - angleBuffer) && angle <= (maxAngle + angleBuffer);
     }
 
     private void OnCollision(Collider2D other){

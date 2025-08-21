@@ -23,6 +23,7 @@ public class NoteManager : MonoBehaviour{
     public BeatManager _beatManager {get; private set;}
     void Start(){
         _beatManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<BeatManager>();
+        int measureCount = (int)_beatManager.GetSongCount();
     }
 
     private int _lastSpawnedIndex = -1;

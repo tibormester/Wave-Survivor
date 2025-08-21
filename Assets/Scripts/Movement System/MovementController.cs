@@ -1,6 +1,6 @@
 using UnityEngine;
-
-public class MovementController : MonoBehaviour
+using Game.ProgressionSystem;
+public class MovementController : MonoBehaviour, IUpgradeable
 {
 
     public float moveSpeed = 5f;
@@ -23,6 +23,14 @@ public class MovementController : MonoBehaviour
             finalMovement = affector.ModifyMovement(finalMovement);
         }
         transform.position += finalMovement;
+    }
+
+    public void Upgrade(UpgradeType upgradeType){
+        switch(upgradeType){
+            case UpgradeType.PlayerSpeed:
+                moveSpeed += 1f;
+                break;
+        }
     }
 
 

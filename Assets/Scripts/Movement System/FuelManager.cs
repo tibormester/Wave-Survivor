@@ -1,6 +1,6 @@
 using UnityEngine;
-
-public class FuelManager : MonoBehaviour{
+using Game.ProgressionSystem;
+public class FuelManager : MonoBehaviour, IUpgradeable{
 
 
     public float MaxFuel = 100f;
@@ -26,6 +26,20 @@ public class FuelManager : MonoBehaviour{
             return true;
         }
         return false;
+    }
+
+    public void Upgrade(UpgradeType upgradeType){
+        switch(upgradeType){
+            case UpgradeType.MaxFuel:
+                MaxFuel += 10f;
+                break;
+            case UpgradeType.FuelRecharge:
+                RefuelRate += 1f;
+                break;
+            case UpgradeType.CurrentFuel:
+                Fuel = MaxFuel;
+                break;
+        }
     }
 
 }
