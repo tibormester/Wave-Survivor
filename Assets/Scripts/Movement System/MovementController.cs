@@ -1,5 +1,6 @@
 using UnityEngine;
 using Game.ProgressionSystem;
+using System.Collections.Generic;
 public class MovementController : MonoBehaviour, IUpgradeable
 {
 
@@ -11,8 +12,14 @@ public class MovementController : MonoBehaviour, IUpgradeable
     public void Update()
     {
         float finalSpeed = moveSpeed;
-        var affectors = GetComponents<IMovementDecorator>();
-        //Can i use a collections function like map with an accumulator?
+        var allAffectors = GetComponents<IMovementDecorator>();
+        var affectors = new List<IMovementDecorator>();
+        foreach (var affector in allAffectors){
+            var script = affector as MonoBehaviour;
+            if (script.enabled){
+                affectors.Add(affector);
+            }
+        }
         foreach (var affector in affectors)
         {
             finalSpeed = affector.ModifyBaseSpeed(finalSpeed);

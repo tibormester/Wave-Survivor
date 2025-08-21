@@ -14,8 +14,7 @@ public class NoteManager : MonoBehaviour{
     public event Action OnNoteHit;
 
     //Must be sorted in chronological order - the beats are values indicate what count they appear on
-    [SerializeField] private float[] notePattern = {1f, 1.5f, 2f, 3f, 3.75f, 4f};
-    [SerializeField] private float patternLength = 4f; 
+    public Rhythm rhythm;
 
 
     [SerializeField] private Note _notePrefab;
@@ -52,11 +51,11 @@ public class NoteManager : MonoBehaviour{
     }
 
     public double GetNoteHitTimeFromRhythm(int noteIndexInPattern, bool localToPattern = false){
-        int index = noteIndexInPattern % notePattern.Length;
-        double note = (double)notePattern[index];
+        int index = noteIndexInPattern % rhythm.notePattern.Length;
+        double note = (double)rhythm.notePattern[index];
         if (!localToPattern){ 
-            int numberOfLoops = (int)(noteIndexInPattern / notePattern.Length);
-            note = note + (numberOfLoops * patternLength);
+            int numberOfLoops = (int)(noteIndexInPattern / rhythm.notePattern.Length);
+            note = note + (numberOfLoops * rhythm.patternLength);
         }
         return _beatManager.GetBeatTime(note);
     }

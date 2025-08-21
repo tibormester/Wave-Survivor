@@ -188,10 +188,7 @@ MonoBehaviour:
   maxRadius: 0.5
   previewTimeSeconds: 1
   currentNoteIndex: 0
-  notePattern:
-  - 1
-  - 3
-  patternLength: 4
+  rhythm: {fileID: 11400000, guid: 4c6c548d768ff5c479a8da6c446a8684, type: 2}
   _notePrefab: {fileID: 9191383388718416156, guid: 2562493ee13d5ea4294e8ebd3b22daee, type: 3}
 --- !u!50 &2414168641758344095
 Rigidbody2D:
