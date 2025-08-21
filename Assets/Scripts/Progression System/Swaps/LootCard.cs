@@ -17,14 +17,13 @@ public class LootCard : MonoBehaviour, IPointerClickHandler{
         _nameText = transform.Find("Name").GetComponent<TextMeshProUGUI>();
         _iconImage = transform.Find("Icon").GetComponent<Image>();
         _descriptionText = transform.Find("Description").GetComponent<TextMeshProUGUI>();
-        GetComponent<Canvas>().worldCamera = Camera.main;
-        //Does Camera.main work? or do i need to get it from the main camera tag?
     }
 
     public void Initialize(LootObject lootObject){
         _nameText.text = lootObject.name;
         _iconImage.sprite = lootObject.icon;
         _descriptionText.text = lootObject.description;
+        this.lootObject = lootObject;
     }
 
     public void OnPointerClick(PointerEventData eventData){

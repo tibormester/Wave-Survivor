@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: This lets you dash
   isMovementAbility: 1
-  movementAbility: 0
+  movementAbility: 2
   rhythm: {fileID: 0}

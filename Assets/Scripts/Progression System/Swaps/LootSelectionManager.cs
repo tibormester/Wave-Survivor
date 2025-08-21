@@ -3,15 +3,20 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 public class LootSelectionManager : MonoBehaviour{
+    [SerializeField] private Canvas lootSelectionCanvas;
     [SerializeField] private List<LootObject> lootObjects;
     [SerializeField] private LootCard lootCardPrefab;
     public TaskCompletionSource<bool> lootSelected;
-    [SerializeField] private Vector3 _lootCardOffset = new Vector3(20f, 0, 0);
+    [SerializeField] private Vector2 _lootCardOffset = new Vector2(90f, 0);
     private GameObject _player;
+    private MovementAbilitySwapper _movementAbilitySwapper;
+    private RhythmSwapper _rhythmSwapper;
     private List<LootCard> _lootCards;
 
     void Start(){
         _player = GameObject.FindGameObjectWithTag("Player");
+        _movementAbilitySwapper = GetComponent<MovementAbilitySwapper>();
+        _rhythmSwapper = GetComponent<RhythmSwapper>();
     }
 
     public Task<bool> WaitForLootSelection(){
@@ -19,14 +24,15 @@ public class LootSelectionManager : MonoBehaviour{
         
         _lootCards = new List<LootCard>();
         for (int i = -1; i <= 1; i++) {
-            _lootCards.Add(CreateRandomLootCard(new Vector3(0f,0f,-5f) + i * _lootCardOffset));
+            _lootCards.Add(CreateRandomLootCard(i * _lootCardOffset));
         }
         
         return lootSelected.Task;
     }
 
-    public LootCard CreateRandomLootCard(Vector3 position){
-        var lootCard = Instantiate(lootCardPrefab, position, Quaternion.identity);
+    public LootCard CreateRandomLootCard(Vector2 anchoredPosition){
+        var lootCard = Instantiate(lootCardPrefab, lootSelectionCanvas.transform);
+        lootCard.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
         lootCard.Initialize(lootObjects[Random.Range(0, lootObjects.Count)]);
         lootCard.LootSelected += OnLootSelected;
         return lootCard;
@@ -38,9 +44,9 @@ public class LootSelectionManager : MonoBehaviour{
         }
 
         if (lootObject.isMovementAbility){
-            _player.GetComponent<MovementAbilitySwapper>().SwapMovementAbility(lootObject.movementAbility);
+            _movementAbilitySwapper.SwapMovementAbility(lootObject.movementAbility);
         } else{
-            _player.GetComponent<RhythmSwapper>().SwapRhythm(lootObject.rhythm);
+            _rhythmSwapper.SwapRhythm(lootObject.rhythm);
         }
 
         lootSelected?.TrySetResult(true);
