@@ -12,7 +12,7 @@ public class LootSelectionManager : MonoBehaviour{
     private GameObject _player;
     private MovementAbilitySwapper _movementAbilitySwapper;
     private RhythmSwapper _rhythmSwapper;
-    private List<LootCard> _lootCards;
+    private LootCard[] _lootCards = new LootCard[3];
 
     void Start(){
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -23,15 +23,14 @@ public class LootSelectionManager : MonoBehaviour{
     public Task<bool> WaitForLootSelection(){
         lootSelected = new TaskCompletionSource<bool>();
         
-        _lootCards = new List<LootCard>();
-        for (int i = -1; i <= 1; i++) {
-            _lootCards.Add(CreateRandomLootCard(i * _lootCardOffset));
+        for (int i = 0; i < _lootCards.Length; i++){
+            _lootCards[i] = CreateRandomLootCard();
         }
         
         return lootSelected.Task;
     }
 
-    public LootCard CreateRandomLootCard(Vector2 anchoredPosition){
+    public LootCard CreateRandomLootCard(){
         var lootCard = Instantiate(lootCardPrefab, lootSelectionCanvas.transform);
         lootCard.Initialize(lootObjects[Random.Range(0, lootObjects.Count)]);
         lootCard.LootSelected += OnLootSelected;
