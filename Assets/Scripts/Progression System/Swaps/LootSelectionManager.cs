@@ -6,8 +6,9 @@ public class LootSelectionManager : MonoBehaviour{
     [SerializeField] private Canvas lootSelectionCanvas;
     [SerializeField] private List<LootObject> lootObjects;
     [SerializeField] private LootCard lootCardPrefab;
+
     public TaskCompletionSource<bool> lootSelected;
-    [SerializeField] private Vector2 _lootCardOffset = new Vector2(90f, 0);
+
     private GameObject _player;
     private MovementAbilitySwapper _movementAbilitySwapper;
     private RhythmSwapper _rhythmSwapper;
@@ -32,7 +33,6 @@ public class LootSelectionManager : MonoBehaviour{
 
     public LootCard CreateRandomLootCard(Vector2 anchoredPosition){
         var lootCard = Instantiate(lootCardPrefab, lootSelectionCanvas.transform);
-        lootCard.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
         lootCard.Initialize(lootObjects[Random.Range(0, lootObjects.Count)]);
         lootCard.LootSelected += OnLootSelected;
         return lootCard;
