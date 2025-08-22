@@ -22,7 +22,8 @@ public class BeatManager : MonoBehaviour{
             _currentBeatIndex++;
         }
     }
-    void Start(){
+
+    private void Awake(){
         _audioSource = GetComponent<AudioSource>();
         _audioSource.Play();
         _startTime = AudioSettings.dspTime;

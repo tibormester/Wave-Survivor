@@ -27,8 +27,8 @@ public class NoteManager : MonoBehaviour{
     }
 
     public void UpdateLastSpawnedIndex(){
-        int measureCount = (int)_beatManager.GetSongCount() / rhythm.patternLength;
-        _lastSpawnedIndex = measureCount * rhythm.patternLength;
+        int measureCount = (int)((int)_beatManager.GetSongCount() / (int)rhythm.patternLength);
+        _lastSpawnedIndex = (int) measureCount * (int)rhythm.patternLength;
         _lastSpawnedIndex = _lastSpawnedIndex - 1;
     }
     
