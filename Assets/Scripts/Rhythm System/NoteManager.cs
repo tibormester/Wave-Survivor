@@ -16,16 +16,22 @@ public class NoteManager : MonoBehaviour{
     //Must be sorted in chronological order - the beats are values indicate what count they appear on
     public Rhythm rhythm;
 
+    private int _lastSpawnedIndex;
 
     [SerializeField] private Note _notePrefab;
 
     public BeatManager _beatManager {get; private set;}
     void Start(){
         _beatManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<BeatManager>();
-        int measureCount = (int)_beatManager.GetSongCount();
+        UpdateLastSpawnedIndex();
     }
 
-    private int _lastSpawnedIndex = -1;
+    public void UpdateLastSpawnedIndex(){
+        int measureCount = (int)_beatManager.GetSongCount() / rhythm.patternLength;
+        _lastSpawnedIndex = measureCount * rhythm.patternLength;
+        _lastSpawnedIndex = _lastSpawnedIndex - 1;
+    }
+    
     void Update(){
 
         double startTime, hitTime;

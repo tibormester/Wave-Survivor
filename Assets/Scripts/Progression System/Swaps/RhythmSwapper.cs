@@ -7,6 +7,8 @@ public class RhythmSwapper : MonoBehaviour {
 
     public void SwapRhythm(Rhythm newRhythm){
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<NoteManager>().rhythm = newRhythm;
+        var noteManager = player.GetComponent<NoteManager>();
+        noteManager.rhythm = newRhythm;
+        noteManager.UpdateLastSpawnedIndex();
     }
 }
