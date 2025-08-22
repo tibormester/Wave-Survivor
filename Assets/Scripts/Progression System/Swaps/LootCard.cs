@@ -10,6 +10,8 @@ public class LootCard : MonoBehaviour, IPointerClickHandler{
     private TextMeshProUGUI _nameText;
     private Image _iconImage;
     private TextMeshProUGUI _descriptionText;
+    [SerializeField] private AudioClip _selectSound;
+    private AudioSource _audioSource;
 
     public event Action<LootObject> LootSelected;
 
@@ -17,6 +19,7 @@ public class LootCard : MonoBehaviour, IPointerClickHandler{
         _nameText = transform.Find("Name").GetComponent<TextMeshProUGUI>();
         _iconImage = transform.Find("Icon").GetComponent<Image>();
         _descriptionText = transform.Find("Description").GetComponent<TextMeshProUGUI>();
+        _audioSource = GameObject.FindGameObjectWithTag("sfx").GetComponent<AudioSource>();
     }
 
     public void Initialize(LootObject lootObject){
@@ -32,6 +35,7 @@ public class LootCard : MonoBehaviour, IPointerClickHandler{
     }
 
     public void OnSelect(){
+        _audioSource.PlayOneShot(_selectSound);
         LootSelected?.Invoke(lootObject);
     }
 }

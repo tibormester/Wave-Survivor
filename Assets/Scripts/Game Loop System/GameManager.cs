@@ -12,9 +12,14 @@ public class GameManager : MonoBehaviour
     private LootSelectionManager _lootSelectionManager;
     const int LOOT_WAVE_INTERVAL = 1;
 
+    private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip _levelUpSound;
     void Start(){
         _lootSelectionManager = GetComponent<LootSelectionManager>();
+        _audioSource = GameObject.FindGameObjectWithTag("sfx").GetComponent<AudioSource>();
         NextWave();
+        
     }
 
     private void SpawnEnemy(Vector3 spawnPoint){
@@ -32,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     private async Task NextWave(){
         _waveNumber++;
+        _audioSource.PlayOneShot(_levelUpSound);
         if (_waveNumber % LOOT_WAVE_INTERVAL == 0){
             await _lootSelectionManager.WaitForLootSelection();
         }

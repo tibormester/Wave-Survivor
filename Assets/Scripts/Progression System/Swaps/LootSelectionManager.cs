@@ -13,6 +13,7 @@ public class LootSelectionManager : MonoBehaviour{
     private MovementAbilitySwapper _movementAbilitySwapper;
     private RhythmSwapper _rhythmSwapper;
     private LootCard[] _lootCards = new LootCard[3];
+    
 
     void Start(){
         _player = GameObject.FindGameObjectWithTag("Player");
