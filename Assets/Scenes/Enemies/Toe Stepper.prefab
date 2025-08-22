@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: -2505479016951371403}
   - component: {fileID: 7313157481364507664}
   - component: {fileID: -1885944332121187736}
+  - component: {fileID: 911727046522799823}
   m_Layer: 0
   m_Name: Toe Stepper
   m_TagString: Untagged
@@ -546,3 +547,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &911727046522799823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342849384872623845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9485908ae0ed654c96017823be9c3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewportPadding: 0.05
