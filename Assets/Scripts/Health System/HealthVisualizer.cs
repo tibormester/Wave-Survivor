@@ -2,41 +2,26 @@ using UnityEngine;
 
 public class HealthVisualizer : MonoBehaviour, IDamageListener, IHealListener{
     
-    // Cached renderer and material property block for per-instance overrides
-    private Renderer _renderer;
-    private MaterialPropertyBlock _mpb;
+    private LineRenderer _lineRenderer;
     
-    // Store base colors so we can scale them by health without mutating the shared material
-    private Color _baseColor;
-    private Color _emissionColor;
-    
-    void Awake(){
-        _renderer = GetComponent<Renderer>();
-        _mpb = new MaterialPropertyBlock();
-        
-        if (_renderer != null){
-            // Read base values from the shared material (do not mutate it)
-            var mat = _renderer.sharedMaterial;
-            if (mat != null){
-                // Prefer URP Lit names, but gracefully fall back to legacy names when needed
-                _baseColor = mat.HasProperty("_BaseColor") ? mat.GetColor("_BaseColor") :
-                    (mat.HasProperty("_Color") ? mat.GetColor("_Color") : Color.white);
-                _emissionColor = mat.HasProperty("_EmissionColor") ? mat.GetColor("_EmissionColor") : Color.black;
-            }
-        }
+    void Start(){
+        _lineRenderer = GetComponent<LineRenderer>();
         updateVisuals(1, 1);
     }
 
-    public void OnDamage(int damageAmount, int newHealth, int maxHealth, GameObject source){
-        Debug.Log("HealthVisualizer: OnDamage called with damageAmount: " + damageAmount + ", newHealth: " + newHealth + ", maxHealth: " + maxHealth);
+    public void OnDamage(float damageAmount, float newHealth, float maxHealth, GameObject source){
         updateVisuals(newHealth, maxHealth);
     }
 
-    public void OnHeal(int healAmount, int newHealth, int maxHealth, GameObject source){
-        Debug.Log("HealthVisualizer: OnHeal called with healAmount: " + healAmount + ", newHealth: " + newHealth + ", maxHealth: " + maxHealth);
+    public void OnHeal(float healAmount, float newHealth, float maxHealth, GameObject source){
         updateVisuals(newHealth, maxHealth);
     }
+    private void updateVisuals(float newHealth, float maxHealth){
+        LineRendererUtility.MakeRing(_lineRenderer, 0.55f, 50, 0f, (newHealth / maxHealth) * 360f);
+    }
 
+
+    /**
     public void updateVisuals(int newHealth, int maxHealth){
         if (_renderer == null){
             return;
@@ -69,4 +54,5 @@ public class HealthVisualizer : MonoBehaviour, IDamageListener, IHealListener{
 
         _renderer.SetPropertyBlock(_mpb);
     }
+    **/
 }

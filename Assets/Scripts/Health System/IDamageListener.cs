@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IDamageListener
 {
-    void OnDamage(int damageAmount, int newHealth, int maxHealth, GameObject source);
+    void OnDamage(float damageAmount, float newHealth, float maxHealth, GameObject source);
 }

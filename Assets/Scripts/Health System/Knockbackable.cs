@@ -11,7 +11,7 @@ public class Knockbackable : MonoBehaviour, IDamageListener, IMovementDecorator 
     private Vector3 queuedKnockbackDistance = Vector3.zero;
     private float knockbackTimer = 0f;
 
-    public void OnDamage(int damageAmount, int newHealth, int maxHealth, GameObject source){
+    public void OnDamage(float damageAmount, float newHealth, float maxHealth, GameObject source){
         var knockbackDirection = (transform.position - source.transform.position).normalized;
         queuedKnockbackDistance += knockbackDirection * damageAmount * knockbackDamageMultiplier;
         knockbackTimer = 0f;

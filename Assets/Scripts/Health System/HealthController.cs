@@ -6,9 +6,9 @@ using Game.ProgressionSystem;
 public class HealthController : MonoBehaviour, IUpgradeable
 {
     
-    public int maxHealth = 100;
+    public float maxHealth = 100;
     public bool isInvincible = false;
-    private int _health;
+    private float _health;
 
     public event Action healthZeroed;
     
@@ -16,12 +16,12 @@ public class HealthController : MonoBehaviour, IUpgradeable
         _health = maxHealth;
     }
 
-    public void SetHealth(int value){
+    public void SetHealth(float value){
         var delta = value - _health;
         AdjustHealth(delta, gameObject);
     }
 
-    public void AdjustHealth(int delta, GameObject source){
+    public void AdjustHealth(float delta, GameObject source){
         if (delta > 0 && _health < maxHealth){
             if (_health + delta > maxHealth){
                 Heal(maxHealth - _health, source);
@@ -36,7 +36,7 @@ public class HealthController : MonoBehaviour, IUpgradeable
     }
 
     
-    private void TakeDamage(int damageAmount, GameObject source)
+    private void TakeDamage(float damageAmount, GameObject source)
     {
         _health -= damageAmount;
         foreach (var listener in GetComponents<IDamageListener>())
@@ -48,7 +48,7 @@ public class HealthController : MonoBehaviour, IUpgradeable
         }
     }
 
-    private void Heal(int healAmount, GameObject source)
+    private void Heal(float healAmount, GameObject source)
     {
         _health += healAmount;
         foreach (var listener in GetComponents<IHealListener>())
