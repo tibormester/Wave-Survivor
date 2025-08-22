@@ -14,16 +14,17 @@ public class SpinningArcState : MonoBehaviour, IEnemyState{
     private MovementController _movementController;
     private GameObject _player;
 
-    void Awake(){
+    void Start(){
        _clockwise = Random.Range(0, 2) == 0 ? true : false;
        _movementController = GetComponent<MovementController>();
        _player = GameObject.FindGameObjectWithTag("Player");
-       GetComponent<NoteManager>().OnNoteHit += ShootAttack;
+       
     }
 
     public void Enter(){
         _targetPosition = _player.transform.position;
         _startPosition = transform.position;
+        GetComponent<NoteManager>().OnNoteHit += ShootAttack;
     }
 
     public void Tick(){
@@ -57,7 +58,7 @@ public class SpinningArcState : MonoBehaviour, IEnemyState{
         //waveAttack.SetDamage(_damage);
     }
     public void Exit(){
-    
+        GetComponent<NoteManager>().OnNoteHit -= ShootAttack;
     }
 
     public bool IsValid(){
