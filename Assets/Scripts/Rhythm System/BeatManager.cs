@@ -17,7 +17,7 @@ public class BeatManager : MonoBehaviour{
     private AudioSource[] audioSources = new AudioSource[7];
     public int _currentBeatIndex = 0;
 
-    private int _currentAudioSourceIndex = 4;
+    private int _currentAudioSourceIndex = 3;
 
     void Update(){
         while (AudioSettings.dspTime >= GetBeatTime(_currentBeatIndex)){

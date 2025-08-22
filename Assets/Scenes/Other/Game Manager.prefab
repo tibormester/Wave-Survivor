@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4026153256883402451}
   - component: {fileID: -6516957954138434348}
   - component: {fileID: 8333709972521833350}
+  - component: {fileID: 5422254824287216801}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -59,6 +60,7 @@ MonoBehaviour:
   - {fileID: 7342849384872623845, guid: ee1f501fd933b4047a31dbf7128a1ea8, type: 3}
   - {fileID: 7342849384872623845, guid: e6bd8b0a0a7285e4e815abbc646573cf, type: 3}
   - {fileID: 7342849384872623845, guid: ef41cde7fa3947043b2667141d5f1b01, type: 3}
+  _levelUpSound: {fileID: 0}
 --- !u!114 &8611113383672801710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,14 +75,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beatsPerMinute: 120
   START_TIME_OFFSET_SECONDS: 0
-  audioSourcesNames:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   _currentBeatIndex: 0
 --- !u!114 &3386446239234030766
 MonoBehaviour:
@@ -119,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dee628fcd71bcd4882f0bcef8576dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRhythm: {fileID: 0}
 --- !u!114 &7113968445375525017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,3 +805,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5422254824287216801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709407070757057914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a6d161a71f486439fa1de756643b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
