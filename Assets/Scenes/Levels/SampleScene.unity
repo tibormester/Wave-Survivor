@@ -255,13 +255,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1213598639773216496, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: destroyDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1213995941334148290, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1213995941334148290, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: knockbackSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213995941334148290, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: maxKnobackTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213995941334148290, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: knockbackDamageMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639880195554371127, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: MaxFuel
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639880195554371127, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: RefuelRate
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4707008790046520325, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6294958927252230019, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -305,11 +329,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7217447142034721069, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7580453550287275962, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
       propertyPath: m_Name
       value: Player Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244354324536337938, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
+      propertyPath: maxHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8258517533536953228, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
       propertyPath: m_Enabled
