@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 4. Tortoise
   m_EditorClassIdentifier: 
   name: Tortoise
-  icon: {fileID: 0}
-  description: 1
+  icon: {fileID: 21300000, guid: fe5ecaed967674d4b8f939a8ba73f2a4, type: 3}
+  description: 'Beat: 1'
   isMovementAbility: 0
   movementAbility: 0
   rhythm: {fileID: 11400000, guid: 1457dc8850be69f46a7d5cd6f24bbab8, type: 2}

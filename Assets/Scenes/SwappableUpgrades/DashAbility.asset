@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DashAbility
   m_EditorClassIdentifier: 
   name: Dash
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 541f7819d7c274ca2b8537cedc1dd6d0, type: 3}
   description: Like in Dark Souls, but without the I frames.
   isMovementAbility: 1
   movementAbility: 0

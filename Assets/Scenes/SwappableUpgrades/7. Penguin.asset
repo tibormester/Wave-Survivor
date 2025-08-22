@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 7. Penguin
   m_EditorClassIdentifier: 
   name: Penguin
-  icon: {fileID: 0}
-  description: 1, 2.5, 3, 4
+  icon: {fileID: 21300000, guid: 201af664c6aaf43c980fc1e718a1dc9d, type: 3}
+  description: 'Beats: 1, 2.5, 3, 4'
   isMovementAbility: 0
   movementAbility: 0
   rhythm: {fileID: 11400000, guid: 341fb26d0306ab446aef70a98278307a, type: 2}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 6. Tardigrade
   m_EditorClassIdentifier: 
   name: Tardigrade
-  icon: {fileID: 0}
-  description: 1.5, 2.5, 3
+  icon: {fileID: 21300000, guid: b8de2ecadbc1c4c14ab82d307c24e4a0, type: 3}
+  description: 'Beats: 1.5, 2.5, 3'
   isMovementAbility: 0
   movementAbility: 0
   rhythm: {fileID: 11400000, guid: 7c16a9babdf0a214c810a22b0598b3ab, type: 2}

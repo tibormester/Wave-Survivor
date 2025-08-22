@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 5. Sloth
   m_EditorClassIdentifier: 
   name: Sloth
-  icon: {fileID: 0}
-  description: 1, 3, 1, 3, 4
+  icon: {fileID: 21300000, guid: 447dad47795724599b5a2f2f5275d84c, type: 3}
+  description: 'Beats: 1, 3, 1, 3, 4'
   isMovementAbility: 0
   movementAbility: 0
   rhythm: {fileID: 11400000, guid: 55058879b4d249843a06a90f232c783c, type: 2}

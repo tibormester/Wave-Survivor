@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 1. Gazelle
   m_EditorClassIdentifier: 
   name: Gazelle
-  icon: {fileID: 0}
-  description: 1, 4, 4.5
+  icon: {fileID: 21300000, guid: 8f8673d32823c4fb0b0db00db2dc69f6, type: 3}
+  description: 'Beats: 1, 4, 4.5'
   isMovementAbility: 0
   movementAbility: 0
   rhythm: {fileID: 11400000, guid: fec7372ae47b31c49acab72b0cbce1a9, type: 2}

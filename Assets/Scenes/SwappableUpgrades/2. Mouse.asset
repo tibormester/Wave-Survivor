@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 2. Mouse
   m_EditorClassIdentifier: 
   name: Mouse
-  icon: {fileID: 0}
-  description: 1, 1.5, 2, 2.5, 3.5
+  icon: {fileID: 21300000, guid: 5d26725abd45d44b3af877a46e03640b, type: 3}
+  description: 'Beats: 1, 1.5, 2, 2.5, 3.5'
   isMovementAbility: 0
   movementAbility: 0
   rhythm: {fileID: 11400000, guid: 4c6c548d768ff5c479a8da6c446a8684, type: 2}

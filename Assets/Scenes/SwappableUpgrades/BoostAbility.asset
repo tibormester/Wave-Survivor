@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BoostAbility
   m_EditorClassIdentifier: 
   name: Boost
-  icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 482907c17519a486393e57a26e64d26c, type: 3}
   description: Trade some fuel for a sustained increase in speed.
   isMovementAbility: 1
   movementAbility: 2
