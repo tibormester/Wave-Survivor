@@ -9,6 +9,9 @@ public class PlayerAttackController : MonoBehaviour, IUpgradeable
     [SerializeField] private float attackSpeed = 2f;
     [SerializeField] private float attackRange = 10f;
     [SerializeField] private float attackSpread = 40f;
+
+    [SerializeField] private Material _goodMaterial;
+    [SerializeField] private Material _badMaterial;
     
 
     void Start()
@@ -35,7 +38,11 @@ public class PlayerAttackController : MonoBehaviour, IUpgradeable
         float qualityMultiplier = Mathf.Max(0.5f + Mathf.Pow(note.GetPercentageToHitTime(), 2f), 1f);
         attack.InitializeAttack(attackDamage * qualityMultiplier, attackSpeed * qualityMultiplier, attackRange * qualityMultiplier, attackSpread * qualityMultiplier, GetMouseAngle());
 
-        
+        if (note.GetPercentageToHitTime() > 0.9f){
+            attack.GetComponent<LineRenderer>().material = _goodMaterial;
+        } else if (note.GetPercentageToHitTime() < 0.5f) {
+            attack.GetComponent<LineRenderer>().material = _badMaterial;
+        }
 
         return true;
     }

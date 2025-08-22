@@ -314,6 +314,8 @@ MonoBehaviour:
   attackSpeed: 3
   attackRange: 10
   attackSpread: 30
+  _goodMaterial: {fileID: 2100000, guid: 9bbf973264209b9488983b4b88a93ef8, type: 2}
+  _badMaterial: {fileID: 2100000, guid: 6d23c8f02efb4b843af557a80dbcf1f0, type: 2}
 --- !u!114 &2798735277304774873
 MonoBehaviour:
   m_ObjectHideFlags: 0
