@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdcb66ade2df21d47aa0ccc92bda8f34, type: 3}
-  m_Name: Funky Syncopation
+  m_Name: 4. Tortoise
   m_EditorClassIdentifier: 
-  name: Funky Syncopation
+  name: Tortoise
   icon: {fileID: 0}
-  description: This lets you dash
+  description: 1
   isMovementAbility: 0
   movementAbility: 0
-  rhythm: {fileID: 11400000, guid: 4c6c548d768ff5c479a8da6c446a8684, type: 2}
+  rhythm: {fileID: 11400000, guid: 1457dc8850be69f46a7d5cd6f24bbab8, type: 2}

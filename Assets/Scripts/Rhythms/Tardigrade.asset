@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f07c6407d65da804e82b342c6e6b4773, type: 3}
-  m_Name: Polyrhythmic Tease
+  m_Name: Tardigrade
   m_EditorClassIdentifier: 
   notePattern:
-  - 1
-  - 2.33
-  - 3.66
+  - 1.5
+  - 2.5
+  - 3
   patternLength: 4
+  audioSourceIndex: 5

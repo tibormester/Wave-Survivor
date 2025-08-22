@@ -4,11 +4,14 @@ using System;
 
 public class RhythmSwapper : MonoBehaviour {
 
+    public Rhythm currentRhythm;
+
+    public event Action OnRhythmSwapped;
+
 
     public void SwapRhythm(Rhythm newRhythm){
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        var noteManager = player.GetComponent<NoteManager>();
-        noteManager.rhythm = newRhythm;
-        noteManager.UpdateLastSpawnedIndex();
+        currentRhythm = newRhythm;
+        GetComponent<BeatManager>().PlayAudioSource(newRhythm.audioSourceIndex);
+        OnRhythmSwapped?.Invoke();
     }
 }

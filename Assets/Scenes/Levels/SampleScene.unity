@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &101862417 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2009244756422712179, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
+  m_PrefabInstance: {fileID: 1974218102981774873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1213995941334148290, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
       propertyPath: maxKnobackTime
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1213995941334148290, guid: b6b584eccbc23e84891c43fb3a99ed7d, type: 3}
       propertyPath: knockbackDamageMultiplier
@@ -699,10 +704,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2009244756422712179, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3386446239234030766, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
       propertyPath: lootSelectionCanvas
       value: 
       objectReference: {fileID: 915867755}
+    - target: {fileID: 3792456878093718495, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4068099364147750080, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -743,8 +756,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 635581492398078281, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
+    - target: {fileID: 7881189929662221829, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
+      propertyPath: currentRhythm
+      value: 
+      objectReference: {fileID: 11400000, guid: 1457dc8850be69f46a7d5cd6f24bbab8, type: 2}
+    - target: {fileID: 8611113383672801710, guid: 449e140e4f2d3664c9575d140b54d424, type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 101862417}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

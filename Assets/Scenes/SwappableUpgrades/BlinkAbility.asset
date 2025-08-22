@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BlinkAbility
   m_EditorClassIdentifier: 
   name: Blink
-  icon: {fileID: 0}
-  description: This lets you dash
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  description: Teleport towards where your looking, but consumes a large amount of
+    fuel.
   isMovementAbility: 1
   movementAbility: 1
   rhythm: {fileID: 0}

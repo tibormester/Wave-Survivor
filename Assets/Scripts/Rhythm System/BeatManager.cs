@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public class BeatManager : MonoBehaviour{
     
@@ -10,11 +12,12 @@ public class BeatManager : MonoBehaviour{
 
     [SerializeField] private double START_TIME_OFFSET_SECONDS = 0f;
 
-    private AudioSource _audioSource;
     private double _startTime;
 
-
+    private AudioSource[] audioSources = new AudioSource[7];
     public int _currentBeatIndex = 0;
+
+    private int _currentAudioSourceIndex = 4;
 
     void Update(){
         while (AudioSettings.dspTime >= GetBeatTime(_currentBeatIndex)){
@@ -24,10 +27,29 @@ public class BeatManager : MonoBehaviour{
     }
 
     private void Awake(){
-        _audioSource = GetComponent<AudioSource>();
-        _audioSource.Play();
+        int i = 0;
+        foreach (var audioSource in GetComponents<AudioSource>()){ 
+            audioSources[i] = audioSource;
+            if (i != _currentAudioSourceIndex){
+                audioSource.mute = true;
+            }
+            audioSource.Play();
+            i++;
+        }
         _startTime = AudioSettings.dspTime;
     }
+
+    public async void PlayAudioSource(int index){
+        while (_currentBeatIndex % 4 != 0){
+            await Task.Yield();
+        }
+
+        audioSources[_currentAudioSourceIndex].mute = true;
+        audioSources[index].mute = false;
+
+        _currentAudioSourceIndex = index;
+    }
+
 
     public double GetSecondsPerBeat(){
         return 60f / beatsPerMinute;

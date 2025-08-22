@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BoostAbility
   m_EditorClassIdentifier: 
   name: Boost
-  icon: {fileID: 0}
-  description: This lets you dash
+  icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  description: Trade some fuel for a sustained increase in speed.
   isMovementAbility: 1
   movementAbility: 2
   rhythm: {fileID: 0}

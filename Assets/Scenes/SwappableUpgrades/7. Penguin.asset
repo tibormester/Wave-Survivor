@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdcb66ade2df21d47aa0ccc92bda8f34, type: 3}
-  m_Name: Polyrhythmic Tease
+  m_Name: 7. Penguin
   m_EditorClassIdentifier: 
-  name: Polyrhthmic Tease
+  name: Penguin
   icon: {fileID: 0}
-  description: This lets you dash
+  description: 1, 2.5, 3, 4
   isMovementAbility: 0
   movementAbility: 0
-  rhythm: {fileID: 11400000, guid: 55058879b4d249843a06a90f232c783c, type: 2}
+  rhythm: {fileID: 11400000, guid: 341fb26d0306ab446aef70a98278307a, type: 2}

@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f07c6407d65da804e82b342c6e6b4773, type: 3}
-  m_Name: Waltz
+  m_Name: Sloth
   m_EditorClassIdentifier: 
   notePattern:
   - 1
-  - 2.5
-  - 3.5
-  patternLength: 2
+  - 3
+  - 5
+  - 7
+  - 8
+  patternLength: 8
+  audioSourceIndex: 4

@@ -14,7 +14,7 @@ public class NoteManager : MonoBehaviour{
     public event Action OnNoteHit;
 
     //Must be sorted in chronological order - the beats are values indicate what count they appear on
-    public Rhythm rhythm;
+    private RhythmSwapper _rhythmSwapper;
 
     private int _lastSpawnedIndex;
 
@@ -22,13 +22,16 @@ public class NoteManager : MonoBehaviour{
 
     public BeatManager _beatManager {get; private set;}
     void Start(){
-        _beatManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<BeatManager>();
+        var gameController = GameObject.FindGameObjectWithTag("GameController");
+        _beatManager = gameController.GetComponent<BeatManager>();
+        _rhythmSwapper = gameController.GetComponent<RhythmSwapper>();
+        _rhythmSwapper.OnRhythmSwapped += UpdateLastSpawnedIndex;
         UpdateLastSpawnedIndex();
     }
 
     public void UpdateLastSpawnedIndex(){
-        int measureCount = (int)((int)_beatManager.GetSongCount() / (int)rhythm.patternLength);
-        _lastSpawnedIndex = (int) measureCount * (int)rhythm.patternLength;
+        int measureCount = (int)((int)_beatManager.GetSongCount() / (int)_rhythmSwapper.currentRhythm.patternLength);
+        _lastSpawnedIndex = (int) measureCount * (int)_rhythmSwapper.currentRhythm.notePattern.Length;
         _lastSpawnedIndex = _lastSpawnedIndex - 1;
     }
     
@@ -57,11 +60,11 @@ public class NoteManager : MonoBehaviour{
     }
 
     public double GetNoteHitTimeFromRhythm(int noteIndexInPattern, bool localToPattern = false){
-        int index = noteIndexInPattern % rhythm.notePattern.Length;
-        double note = (double)rhythm.notePattern[index];
+        int index = noteIndexInPattern % _rhythmSwapper.currentRhythm.notePattern.Length;
+        double note = (double)_rhythmSwapper.currentRhythm.notePattern[index];
         if (!localToPattern){ 
-            int numberOfLoops = (int)(noteIndexInPattern / rhythm.notePattern.Length);
-            note = note + (numberOfLoops * rhythm.patternLength);
+            int numberOfLoops = (int)(noteIndexInPattern / _rhythmSwapper.currentRhythm.notePattern.Length);
+            note = note + (numberOfLoops * _rhythmSwapper.currentRhythm.patternLength);
         }
         return _beatManager.GetBeatTime(note);
     }

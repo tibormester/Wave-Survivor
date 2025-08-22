@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Dash
   icon: {fileID: 0}
-  description: This lets you dash
+  description: Like in Dark Souls, but without the I frames.
   isMovementAbility: 1
   movementAbility: 0
   rhythm: {fileID: 0}
