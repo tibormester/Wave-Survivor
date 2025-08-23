@@ -6,13 +6,16 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
     
     const float SPAWN_RADIUS = 25f;
-    private int _waveNumber = 0;
+    public int _waveNumber = 0;
+    public int _enemiesKilled = 0;
     private int _enemyCount = 0;
 
     private LootSelectionManager _lootSelectionManager;
     const int LOOT_WAVE_INTERVAL = 1;
 
     private AudioSource _audioSource;
+
+    [SerializeField] private GameObject _statsPopup;
 
     [SerializeField] private AudioClip _levelUpSound;
     void Start(){
@@ -30,11 +33,16 @@ public class GameManager : MonoBehaviour
 
     private void OnEnemyDeath(){
         _enemyCount--;
+        _enemiesKilled++;
         if (_enemyCount == 0){
             NextWave();
         }
     }
-
+    public void DisplayStats(){
+        var ui = GameObject.FindGameObjectWithTag("ui");
+        var statsPopup = Instantiate(_statsPopup, ui.transform);
+        statsPopup.GetComponent<StatsPopup>().DisplayStats(_waveNumber, _enemiesKilled);
+    }
     private async Task NextWave(){
         _waveNumber++;
         _audioSource.PlayOneShot(_levelUpSound);

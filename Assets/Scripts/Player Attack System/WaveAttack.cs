@@ -50,7 +50,8 @@ public class WaveAttack : MonoBehaviour
 
     private void CheckForCollisions(){
         var allColliders = Physics2D.OverlapCircleAll(transform.position, currentRadius);
-        var innerColliders = Physics2D.OverlapCircleAll(transform.position, currentRadius - waveWidth);
+        var innerRadius = (currentRadius - waveWidth < 0.01f) ? 0f : currentRadius - waveWidth;
+        var innerColliders = Physics2D.OverlapCircleAll(transform.position, innerRadius);
         var waveColliders = allColliders.Where(collider => 
             !innerColliders.Contains(collider) &&
             IsInArc(collider.transform.position)

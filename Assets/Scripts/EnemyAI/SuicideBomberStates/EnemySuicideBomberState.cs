@@ -30,6 +30,7 @@ public class EnemySuicideBomberState : MonoBehaviour, IEnemyState{
         _timer += Time.deltaTime;
         if (_timer >= suicideBomberTime){
             var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            explosion.GetComponent<WaveAttack>().sourceObject = gameObject;
             _healthController.SetHealth(0);
             _timer = 0f;
 

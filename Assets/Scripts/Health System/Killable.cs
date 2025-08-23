@@ -25,8 +25,16 @@ public class Killable : MonoBehaviour, IDamageListener{
     private IEnumerator DelayedKill(){
         _audioSource.PlayOneShot(_deathSound);
         var enemyManager = GetComponent<EnemyStateManager>();
+        var movementController = GetComponent<MovementController>();
+        var attackController = GetComponent<PlayerAttackController>();
         if (enemyManager != null){
             enemyManager.enabled = false;
+        }
+        if (movementController != null){
+            movementController.enabled = false;
+        }
+        if (attackController != null){
+            attackController.enabled = false;
         }
         yield return new WaitForSeconds(destroyDelay);
 
@@ -34,6 +42,9 @@ public class Killable : MonoBehaviour, IDamageListener{
             yield break;
         }
         if (gameObject.tag == "Player"){
+            var gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+            gameManager.DisplayStats();
+            yield return new WaitForSeconds(2.5f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         } else {
             Destroy(gameObject);

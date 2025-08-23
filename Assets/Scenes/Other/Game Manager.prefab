@@ -60,7 +60,10 @@ MonoBehaviour:
   - {fileID: 7342849384872623845, guid: ee1f501fd933b4047a31dbf7128a1ea8, type: 3}
   - {fileID: 7342849384872623845, guid: e6bd8b0a0a7285e4e815abbc646573cf, type: 3}
   - {fileID: 7342849384872623845, guid: ef41cde7fa3947043b2667141d5f1b01, type: 3}
-  _levelUpSound: {fileID: 0}
+  _waveNumber: 0
+  _enemiesKilled: 0
+  _statsPopup: {fileID: 5395529530788116785, guid: f030953e1e3544f41baa381a19a3f94b, type: 3}
+  _levelUpSound: {fileID: 8300000, guid: 45d13914b1d5f014496e0c7cca15a5a5, type: 3}
 --- !u!114 &8611113383672801710
 MonoBehaviour:
   m_ObjectHideFlags: 0
